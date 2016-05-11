@@ -1,6 +1,57 @@
-{% extends '::base.html.twig' %}
+<html>
+<head>
+	<title>Ianser</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="{{ asset('css/welcome.css') }}" />
+	<script src="{{ asset('js/welcome.js') }}"></script>
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-{% block body %}
-    <h1>Portada!</h1>
+</head>
+<body>
+	<div id="CoverVideo" class="">
 
-{% endblock %}
+		<div id="BenvingudaBox">
+		<h1>- I' ANSER -</h1>
+		<p id="fraseSotaTitol">Eat Sleep Rave Repeat</p>
+		
+		<div id="accions">
+			<div id="iniciaSesio">
+				<div id="buttFB"><div id="borderSpanFB"><span id="buttFBSpan">Inicia sessio amb facebook</span></div></div>
+				<div id="buttAcc"><div id="borderSpanAcc" onclick="OpcioIniciSesio();"><span id="buttAccSpan">Inicia sessio amb compte</span></div></div>
+			</div>
+
+			<div id="space">
+			</div>
+
+			<div id="registraUsuari">
+				<div id="frase"><div id="fraseSpanReg"><span span id="fraseSpan">Registra't en 5 minuts!</span></div></div>
+				<div id="registrar"><div id="borderSpanReg"><span span id="registrarSpan">Registrar usuari</span></div></div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div id="IniciaSesioAcc">
+		<i class="fa fa-times fa-3x" id="tencaIniciSesio" aria-hidden="true"></i>
+		<h1 id="ianserLogIN">- I' ANSER -</h1>
+		<div id="inputsAcc">
+			<div id="userdiv"><input id="userinput" type="text" placeholder="Username"></div>
+			<div id="passdiv"><input id="passinput" type="password" placeholder="Password"></div>
+			<div id="botoAceptarLogIn"><span id="BotoEntrarSpan">Entra</span></div>
+		</div>
+	</div>
+
+	</div>
+	
+
+
+	<iframe id="Fullframe" src="https://www.youtube.com/embed/1-sVz6c30PM?iv_load_policy=3&showinfo=0&controls=0&color=white&autohide=1&version=3&loop=1&playlist=player_304_812456813_1727842840&rel=0&hd=2&videoid=1-sVz6c30PM&autoplay=1&html5=1&widget_referrer=https%3A%2F%2Fwww.google.es%2F&enablejsapi=1&origin=http%3A%2F%2Fwww.agenciaumbrella.com">
+
+	</iframe>
+
+	
+</body>
+</html>
