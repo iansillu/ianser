@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Llista d'usuaris</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Apellido2</th>
+                <th>Ciudad</th>
+                <th>Email</th>
+                <th>Salt</th>
+                <th>Iduser</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usuari in usuaris %}
+            <tr>
+                <td>{{ usuari.username }}</td>
+                <td>{{ usuari.password }}</td>
+                <td>{{ usuari.nombre }}</td>
+                <td>{{ usuari.apellido }}</td>
+                <td>{{ usuari.apellido2 }}</td>
+                <td>{{ usuari.ciudad }}</td>
+                <td>{{ usuari.email }}</td>
+                <td>{{ usuari.salt }}</td>
+                <td>{{ usuari.iduser }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('usuari_modificar', { 'id': usuari.iduser }) }}">Editar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('usuari_eliminar', { 'id': usuari.iduser }) }}">Eliminar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('usuari_crear') }}">
+                Crear un nou usuari
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

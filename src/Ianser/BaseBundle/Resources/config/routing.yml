@@ -1,0 +1,9 @@
+base:
+    resource: "@IanserBaseBundle/Controller/DefaultController.php"
+    type: annotation
+
+usuario_login_check:
+    path: /login_check
+
+usuario_logout:
+    path: /logout

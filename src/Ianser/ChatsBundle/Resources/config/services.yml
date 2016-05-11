@@ -1,0 +1,4 @@
+services:
+#    ianser_chats.example:
+#        class: Ianser\ChatsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

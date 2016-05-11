@@ -1,0 +1,4 @@
+services:
+#    ianser_eventos.example:
+#        class: Ianser\EventosBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

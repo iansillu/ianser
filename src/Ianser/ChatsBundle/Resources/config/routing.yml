@@ -1,0 +1,3 @@
+ianser_chats_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: IanserChatsBundle:Default:index }

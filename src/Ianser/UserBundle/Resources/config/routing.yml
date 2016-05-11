@@ -1,0 +1,4 @@
+user:
+    resource: "@IanserUserBundle/Controller/UserController.php"
+    type: annotation
+

@@ -1,0 +1,21 @@
+ianser_base:
+    resource: "@IanserBaseBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ianser_buscador:
+    resource: "@IanserBuscadorBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+ianser_eventos:
+    resource: "@IanserEventosBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+ianser_chats:
+    resource: "@IanserChatsBundle/Resources/config/routing.yml"
+    prefix:   /api
+
+ianser_user:
+    resource: "@IanserUserBundle/Resources/config/routing.yml"
+    prefix:   /api/usuario
+    
+

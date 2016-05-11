@@ -1,0 +1,42 @@
+<?php
+
+namespace Ianser\EventosBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Eventosxgenero
+ *
+ * @ORM\Table(name="EventosXGenero", indexes={@ORM\Index(name="fk_evento2", columns={"fkEvento"})})
+ * @ORM\Entity
+ */
+class Eventosxgenero
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genero", type="string", length=30, nullable=false)
+     */
+    private $genero;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idEventoXGenero", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $ideventoxgenero;
+
+    /**
+     * @var \Ianser\UserBundle\Entity\Eventos
+     *
+     * @ORM\ManyToOne(targetEntity="Ianser\UserBundle\Entity\Eventos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fkEvento", referencedColumnName="idEvento")
+     * })
+     */
+    private $fkevento;
+
+
+}
