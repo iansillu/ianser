@@ -12,17 +12,10 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="portada")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        return $this->render('IanserBaseBundle:Default:portada.html.twig');
-    }
+
     
     /**
-     * @Route("/login", name="usuario_login")
+     * @Route("/", name="portada")
      * @Method("GET")
      */
     public function loginAction(Request $request)
