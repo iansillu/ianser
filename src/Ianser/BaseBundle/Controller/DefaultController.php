@@ -38,7 +38,7 @@ class DefaultController extends Controller
             $sesion->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
         
-        return $this->render('IanserUserBundle:Default:login.html.twig', array(
+        return $this->render('IanserBaseBundle:Default:portada.html.twig', array(
             'last_username' => $sesion->get(SecurityContext::LAST_USERNAME),
             'error'
             => $error
