@@ -1,12 +1,12 @@
 <?php
 
-namespace Ianser\UserBundle\Form;
+namespace Ianser\BuscadorBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserType extends AbstractType
+class BuscadorType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,13 +15,12 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username','text', array('label'=>"Nom d'usuari"))
-            ->add('password','text', array('label'=>"Contrasenya"))
-            ->add('nombre','text', array('label'=>"Nom"))
-            ->add('apellido','text', array('label'=>"Primer cognom"))
-            ->add('apellido2','text', array('label'=>"Segon cognom"))
-            ->add('ciudad','text', array('label'=>"Ciutat"))
-            ->add('email','email')
+            ->add('nombre')
+            ->add('dirimagen')
+            ->add('direccion')
+            ->add('ciudad')
+            ->add('descripcion')
+            ->add('tipo')
         ;
     }
     
@@ -31,7 +30,7 @@ class UserType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Ianser\UserBundle\Entity\User'
+            'data_class' => 'Ianser\EventosBundle\Entity\Evento'
         ));
     }
 
@@ -40,6 +39,6 @@ class UserType extends AbstractType
      */
     public function getName()
     {
-        return 'ianser_userbundle_user';
+        return 'ianser_eventobundle_evento';
     }
 }

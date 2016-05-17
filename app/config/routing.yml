@@ -16,6 +16,6 @@ ianser_chats:
 
 ianser_user:
     resource: "@IanserUserBundle/Resources/config/routing.yml"
-    prefix:   /api/usuario
+    prefix:   /api
     
 

@@ -77,3 +77,13 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+vich_uploader:
+    db_driver: orm
+    
+    mappings:
+        imatges_events:
+            uri_prefix: /images/eventos/
+            upload_destination: %kernel.root_dir%/../web/images/eventos
+            delete_on_update:   true
+            delete_on_remove:   true

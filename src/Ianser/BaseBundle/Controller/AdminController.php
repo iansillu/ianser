@@ -60,8 +60,7 @@ class AdminController extends Controller
             $usuari->setRoles("ROLE_EMPRESA");
             $em->persist($usuari);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('info','¡Enhorabuena! Te has registrado correctamente.');
-            return $this->redirect($this->generateUrl("portada"));
+            return $this->redirect($this->generateUrl("admin_portada"));
         }
 
         return $this->render("IanserUserBundle:User:new.html.twig", array(

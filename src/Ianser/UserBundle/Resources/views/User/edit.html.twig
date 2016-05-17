@@ -6,11 +6,6 @@
     {{ form(form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('usuari_llistar') }}">
-            Tornar a la llista d'usuaris
-        </a>
-    </li>
-    <li><a href='{{ path('usuari_eliminar', {'id': usuari.iduser}) }}'/>Eliminar</li>
+    <li><a href='{{ path('usuari_eliminar', {'id': usuari.iduser}) }}'/>Eliminar compte</li>
 </ul>
 {% endblock %}

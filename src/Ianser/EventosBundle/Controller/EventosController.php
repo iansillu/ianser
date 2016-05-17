@@ -45,11 +45,11 @@ class EventosController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            var_dump($evento);
             $em = $this->getDoctrine()->getManager();
             $evento->setFkuser($this->getUser());
             $em->persist($evento);
             $em->flush();
-            $this->get('session')->getFlashBag()->add('info','¡Evento creado!');
             return $this->redirect($this->generateUrl("evento_llistar"));
         }
 
@@ -88,6 +88,7 @@ class EventosController extends Controller
         
 
     }
+    
     /**
      * @Route("/empresa/eventos/eliminar/{id}", name="evento_eliminar")
      */

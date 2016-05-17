@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Ianser\UserBundle\Entity\User;
 use Ianser\UserBundle\Form\UserType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 /**
@@ -24,18 +25,26 @@ class UserController extends Controller
     public function modificarAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $usuari = $em->getRepository('IanserUserBundle:User')->find($id);
+        $usuari_loguejat= $this->getUser();
+        
+        if ($usuari_loguejat===$usuari){
+            $form=$this->createForm(new UserType(), $usuari );
+            $form->add('Modificar','submit');
+            $form->handleRequest($request);
 
-        $form=$this->createForm(new UserType(), $usuari );
-        $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em->flush();
+                return $this->redirect($this->generateUrl('usuari_modificar', array('id' => $id)));
+            }
 
-        if ($form->isValid()) {
-            $em->flush();
-            return $this->redirect($this->generateUrl('usuari_modificar', array('id' => $id)));
+            return $this->render("IanserUserBundle:User:edit.html.twig", array('form'=>$form->createView(), 'usuari'=>$usuari));
         }
-
-        return $this->render("IanserUserBundle:User:edit.html.twig", array('form'=>$form->createView(), 'usuari'=>$usuari));
+        else{
+            throw new AccessDeniedException();
+        }
+        
+        
 
     }
     /**
@@ -43,13 +52,28 @@ class UserController extends Controller
      */
     public function eliminarAction($id)
     {
-
         $em = $this->getDoctrine()->getManager();
         $usuari = $em->getRepository('IanserUserBundle:User')->find($id);
-        $em->remove($usuari);
-        $em->flush();
+        $usuari_loguejat= $this->getUser();
         
-         return $this->redirect($this->generateUrl("portada"));
+        if ($usuari_loguejat===$usuari){
+            $usuari = $em->getRepository('IanserUserBundle:User')->find($id);
+            $events_usuari= $em->getRepository('IanserEventosBundle:Evento')->findBy(array("fkuser"=>$usuari));
+            foreach($events_usuari as $event){
+                $em->remove($event);
+                $em->flush();
+            }
+            $em->remove($usuari);
+            $em->flush();
+            $this->get('security.context')->setToken(null);
+            $this->get('request')->getSession()->invalidate();
+            return $this->redirect($this->generateUrl("portada"));
+        }
+        else{
+           throw new AccessDeniedException(); 
+        }
+        
+        
     }
-
+    
 }

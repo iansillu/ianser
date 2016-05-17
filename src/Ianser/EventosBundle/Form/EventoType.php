@@ -15,13 +15,30 @@ class EventoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('dirimagen')
-            ->add('direccion')
-            ->add('ciudad')
-            ->add('descripcion')
-            ->add('tipo')
-        ;
+            ->add('nombre', 'text', array('label'=>"Nom"))
+            ->add('dirimagen', 'file', array('label'=>"Imatge", 'data_class' => null))
+            ->add('direccion', 'text', array('label'=>"Carrer"))
+            ->add('ciudad', 'text', array('label'=>"Ciutat"))
+            ->add('descripcion', 'text', array('label'=>"Descripció"))
+            ->add('tipo', 'choice', array(
+                'choices'=>array(
+                    'Al aire lliure'=> 'Al aire lliure',
+                    'En un local'=> 'En un local',
+                    ),
+                'choices_as_values'=>true,
+                'label'=>"Entorn"))
+            ->add('aforo','integer')
+            ->add('edad','integer', array('label'=>"Edat"))
+            ->add('gratuito', 'choice', array(
+                'choices'=>array(
+                    'Si'=> 1,
+                    'No'=> 0,
+                    ),
+                'choices_as_values'=>true,
+                'label'=>"Gratuit",
+            ));
+            
+        
     }
     
     /**

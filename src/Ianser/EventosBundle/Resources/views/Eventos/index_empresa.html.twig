@@ -20,7 +20,7 @@
         {% for evento in eventos %}
             <tr>
                 <td>{{ evento.nombre }}</a></td>
-                <td>{{ evento.dirimagen }}</td>
+                <td><img src="{{ vich_uploader_asset(evento, 'imageFile') }}" /></td>
                 <td>{{ evento.direccion }}</td>
                 <td>{{ evento.ciudad }}</td>
                 <td>{{ evento.descripcion }}</td>

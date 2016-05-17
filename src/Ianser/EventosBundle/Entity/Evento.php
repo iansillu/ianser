@@ -1,13 +1,14 @@
 <?php
 
 namespace Ianser\EventosBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Eventos
  *
  * @ORM\Table(name="Eventos", indexes={@ORM\Index(name="fk_user4", columns={"fkUser"})})
+ * @Vich\Uploadable
  * @ORM\Entity
  */
 class Evento
@@ -19,6 +20,15 @@ class Evento
      */
     private $nombre;
 
+    
+    /**
+     * @Vich\UploadableField(mapping="imatges_events", fileNameProperty="dirimagen")
+     * 
+     * @var File
+     */
+    private $imageFile;
+    
+    
     /**
      * @var string
      *
@@ -62,6 +72,27 @@ class Evento
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idevento;
+    
+     /**
+     * @var integer
+     *
+     * @ORM\Column(name="aforo", type="integer")
+     */
+    private $aforo;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="edad", type="integer")
+     */
+    private $edad;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gratuito", type="integer")
+     */
+    private $gratuito;
 
     /**
      * @var \Ianser\UserBundle\Entity\User
@@ -72,8 +103,6 @@ class Evento
      * })
      */
     private $fkuser;
-
-
 
     /**
      * Set nombre
@@ -244,6 +273,35 @@ class Evento
     public function getFkuser()
     {
         return $this->fkuser;
+    }
+    
+    public function getAforo(){
+        return $this->aforo;
+    }
+    
+    public function setAforo($aforo){
+        $this->aforo= $aforo;
+    }
+    
+    public function getEdad(){
+        return $this->edad;
+    }
+    
+    public function setEdad($edad){
+        $this->edad= $edad;
+    }
+    
+    public function getGratuito(){
+        return $this->gratuito;
+    }
+    
+    public function setGratuito($gratuito){
+        $this->gratuito= $gratuito;
+    }
+    
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
     
     public function __toString() {
