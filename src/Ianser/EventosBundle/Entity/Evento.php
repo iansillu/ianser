@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Eventos", indexes={@ORM\Index(name="fk_user4", columns={"fkUser"})})
  * @ORM\Entity
  */
-class Eventos
+class Evento
 {
     /**
      * @var string
@@ -244,5 +244,9 @@ class Eventos
     public function getFkuser()
     {
         return $this->fkuser;
+    }
+    
+    public function __toString() {
+        return $this->nombre;
     }
 }

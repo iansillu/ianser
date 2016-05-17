@@ -25,6 +25,13 @@ class User implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="roles", type="string", length=100, nullable=false)
+     */
+    private $roles;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=80, nullable=false)
      */
     private $email;
@@ -205,8 +212,13 @@ class User implements UserInterface
     }
     
     function eraseCredentials(){}
+    
+    function setRoles($roles){
+        $this->roles= $roles;
+    }
+    
     function getRoles(){
-        return array('ROLE_USUARIO');
+        return array($this->roles);
     }
 
     function setUserName($username){
@@ -220,5 +232,8 @@ class User implements UserInterface
     }
     function setEmail($email){
         $this->email= $email;
+    }
+    public function __toString() {
+        return $this->nombre;
     }
 }

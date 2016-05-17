@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Crear usuari</h1>
+    <h1>Eventos creation</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('admin_llistar') }}">
-            Tornar a la llista
+        <a href="{{ path('evento_llistar') }}">
+            Back to the list
         </a>
     </li>
 </ul>

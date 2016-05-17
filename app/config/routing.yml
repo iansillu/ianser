@@ -8,7 +8,7 @@ ianser_buscador:
 
 ianser_eventos:
     resource: "@IanserEventosBundle/Resources/config/routing.yml"
-    prefix:   /api
+    prefix:   /
 
 ianser_chats:
     resource: "@IanserChatsBundle/Resources/config/routing.yml"

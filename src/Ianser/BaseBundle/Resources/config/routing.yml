@@ -2,6 +2,10 @@ base:
     resource: "@IanserBaseBundle/Controller/DefaultController.php"
     type: annotation
 
+admin:
+    resource: "@IanserBaseBundle/Controller/AdminController.php"
+    type: annotation
+    
 usuario_login_check:
     path: /login_check
 

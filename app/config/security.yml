@@ -13,19 +13,28 @@ security:
             entity: { class: Ianser\UserBundle\Entity\User, property: username }
         
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
         main:
             provider: usuario
-            pattern: ^/*
-            anonymous: ~
-            form_login: ~
+            pattern: ^/
+            anonymous: true
+            form_login:
+                login_path: portada
+                check_path: /login_check
+                use_referer: true
+                default_target_path: redirect_login
+            logout:
+                path: /logout
+                target: /
             remember_me:
                 key: ayatsforever
                 lifetime: 3600
+        
 
         
     access_control:
-    - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/registro, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/empresa*, role: ROLE_EMPRESA }
+    - { path: ^/api, roles: [ROLE_USUARIO, ROLE_EMPRESA, ROLE_ADMIN] }
     - { path: ^/admin, role: ROLE_ADMIN }
-    - { path: ^/api/, role: ROLE_USUARIO }
+    - { path: ^/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    

@@ -34,7 +34,7 @@ class Usuarioeventos
     /**
      * @var \Ianser\EventosBundle\Entity\Eventos
      *
-     * @ORM\ManyToOne(targetEntity="Ianser\EventosBundle\Entity\Eventos")
+     * @ORM\ManyToOne(targetEntity="Ianser\EventosBundle\Entity\Evento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="fkEvento", referencedColumnName="idEvento")
      * })

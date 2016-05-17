@@ -13,28 +13,10 @@ use Ianser\UserBundle\Form\UserType;
 /**
  * User controller.
  *
- * @Route("/")
+ * @Route("/usuario")
  */
 class UserController extends Controller
 {
-
-    
-    
-    
-    
-    /**
-     * @Route("/llistar", name="usuari_llistar")
-     * @Method("GET")
-     */
-    public function llistarAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $usuaris = $em->getRepository('IanserUserBundle:User')->findAll();
-        return $this->render("IanserUserBundle:User:index.html.twig", array('usuaris'=>$usuaris));
-    }
-    
-   
 
     /**
      * @Route("/actualitzar/{id}", name="usuari_modificar")

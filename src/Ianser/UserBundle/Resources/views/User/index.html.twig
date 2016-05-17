@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Llista d'usuaris</h1>
 
-    <table class="records_list">
+    <table class="records_list" style="border:1px solid black;">
         <thead>
             <tr>
                 <th>Username</th>
@@ -13,24 +13,25 @@
                 <th>Apellido2</th>
                 <th>Ciudad</th>
                 <th>Email</th>
-                <th>Salt</th>
                 <th>Iduser</th>
+                <th> Rols </th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for usuari in usuaris %}
-            <tr>
-                <td>{{ usuari.username }}</td>
-                <td>{{ usuari.password }}</td>
-                <td>{{ usuari.nombre }}</td>
-                <td>{{ usuari.apellido }}</td>
-                <td>{{ usuari.apellido2 }}</td>
-                <td>{{ usuari.ciudad }}</td>
-                <td>{{ usuari.email }}</td>
-                <td>{{ usuari.salt }}</td>
-                <td>{{ usuari.iduser }}</td>
-                <td>
+            <tr style="border:1px solid black;">
+                <td style="border:1px solid black;">{{ usuari.username }}</td>
+                <td style="border:1px solid black;">{{ usuari.password }}</td>
+                <td style="border:1px solid black;">{{ usuari.nombre }}</td>
+                <td style="border:1px solid black;"{{ usuari.apellido }}</td>
+                <td style="border:1px solid black;">{{ usuari.apellido2 }}</td>
+                <td style="border:1px solid black;">{{ usuari.ciudad }}</td>
+                <td style="border:1px solid black;">{{ usuari.email }}</td>
+                
+                <td style="border:1px solid black;">{{ usuari.iduser }}</td>
+                <td style="border:1px solid black;">{{ usuari.roles[0] }}</td>
+                <td style="border:1px solid black;">
                 <ul>
                     <li>
                         <a href="{{ path('usuari_modificar', { 'id': usuari.iduser }) }}">Editar</a>
@@ -50,6 +51,9 @@
             <a href="{{ path('usuari_crear') }}">
                 Crear un nou usuari
             </a>
+        </li>
+        <li>
+            <a href="{{ path('admin_portada') }}">Tornar al menú principal </a>
         </li>
     </ul>
     {% endblock %}

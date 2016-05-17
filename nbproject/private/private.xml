@@ -3,16 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Form/UserType.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Controller/EventosController.php</file>
             <file>file:/home/sergi/Escritorio/ianser/app/config/routing.yml</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Entity/User.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Resources/views/Eventos/index_empresa.html.twig</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BaseBundle/Controller/DefaultController.php</file>
-            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Resources/views/User/new.html.twig</file>
-            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Resources/config/routing.yml</file>
-            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Resources/views/User/index.html.twig</file>
-            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Controller/UserController.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Resources/views/Eventos/edit.html.twig</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Resources/views/Eventos/index_usuario.html.twig</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Entity/Evento.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Entity/Usuarioeventos.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Form/EventoType.php</file>
             <file>file:/home/sergi/Escritorio/ianser/app/config/security.yml</file>
-            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Resources/views/Default/login.html.twig</file>
         </group>
     </open-files>
 </project-private>

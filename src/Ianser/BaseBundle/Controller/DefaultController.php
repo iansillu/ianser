@@ -9,10 +9,38 @@ use Ianser\UserBundle\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Ianser\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+
 
 class DefaultController extends Controller
 {
 
+    /**
+     * @Route("/redirect", name="redirect_login")
+     * @Method("GET")
+     */
+    public function redirectLoginAction(){
+
+        $url="portada";
+        if ($this->get('security.context')->isGranted('ROLE_USUARIO')) {
+            $url = 'evento_llistar';
+        } 
+        
+        elseif ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            $url = 'admin_portada';
+        }
+        
+        elseif ($this->get('security.context')->isGranted('ROLE_EMPRESA')) {
+            $url = 'evento_llistar';
+        }
+        
+       return new RedirectResponse($this->generateUrl($url));
+       
+    }
     
     /**
      * @Route("/", name="portada")
@@ -69,4 +97,5 @@ class DefaultController extends Controller
         ));
         
     }
+    
 }
