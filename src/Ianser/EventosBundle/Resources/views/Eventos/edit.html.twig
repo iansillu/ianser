@@ -1,20 +1,105 @@
 {% extends '::base.html.twig' %}
 
+{% block css %}
+
+<style type="text/css">
+    #content{
+        width: 100vw;
+        padding-top: 50px;
+        display: flex;
+        justify-content:center;
+    }
+
+    #nouEvento{
+        z-index: 10;
+        background-color: white;
+        border: 1px solid grey;
+        width: 50vw;
+        left: calc(50vw - 300px);
+        top: 25vh;
+        border-radius: 5px;
+        -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        -moz-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        display: flex;
+        flex-direction:column;
+        max-width: 500px;
+        max-height: 500px;
+        min-height: 500px;
+        min-width: 500px;
+    }
+
+    h1{align-self:center; font-family: 'surfer';}
+    form{align-self:center;}
+    .record_actions{align-self:center;}
+    .record_actions:visited a{color:grey !important;}
+    input{margin-top: 20px;}
+
+    button,.tornarenrere{
+        color: white !important;
+        align-self:center;
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 5px;
+        background-color:#a6a6a6;
+        -webkit-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        -moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        margin-top: 30px;
+    }
+    .tornarenrere{margin-bottom: 0px !important;}
+
+    button{
+        margin-left: calc(50% - 25px );
+        background-color: #99ff99;
+        color: black !important;
+    }
+
+    .butttun{color: white !important;
+        align-self:center;
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 5px;
+        background-color:#a6a6a6;
+        -webkit-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        -moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        margin-top: 30px;
+        align-self:center;
+        margin-right: 15px;
+        font-weight: bold;
+    }
+
+    #butonsMoure{display: flex; justify-content:center;}
+    /*.enrere:link{
+        color: black !important;
+    }
+    .enrere:visited{
+        color:black !important;
+    }*/
+
+</style>
+
+
+{% endblock %}
+
 {% block body -%}
-    <h1>Eventos edit</h1>
+
+<div id="nouEvento">
+    <h1>Modifica</h1>
+
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('evento_llistar') }}">
-            Tornar a la llista d'events
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('evento_eliminar', {'id': evento.idevento}) }}">
-            Eliminar
-        </a>
-    </li>
-</ul>
+    <div id="butonsMoure">
+            <a class="butttun record_actions enrere" href="{{ path('evento_llistar') }}">
+                Tornar a la llista d'events
+            </a>
+
+            <a class="butttun record_actions" style="background-color: #ff4d4d
+    " href="{{ path('evento_eliminar', {'id': evento.idevento}) }}">
+                Eliminar
+            </a>
+    </div>
+</div>
 {% endblock %}

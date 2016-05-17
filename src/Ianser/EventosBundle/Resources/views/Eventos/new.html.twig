@@ -1,15 +1,79 @@
 {% extends '::base.html.twig' %}
 
+{% block css %}
+
+<style type="text/css">
+	#content{
+        width: 100vw;
+        padding-top: 50px;
+        display: flex;
+        justify-content:center;
+    }
+
+	#nouEvento{
+		z-index: 10;
+	    background-color: white;
+	    border: 1px solid grey;
+	    width: 50vw;
+	    left: calc(50vw - 300px);
+	    top: 25vh;
+	    border-radius: 5px;
+	    -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+	    -moz-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+	    box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+	    display: flex;
+	    flex-direction:column;
+	    max-width: 500px;
+	    max-height: 500px;
+	    min-height: 500px;
+	    min-width: 500px;
+	}
+
+	h1{align-self:center; font-family: 'surfer';}
+	form{align-self:center;}
+	.record_actions{align-self:center;}
+	.record_actions:visited a{color:grey !important;}
+	input{margin-top: 20px;}
+
+	button,.tornarenrere{
+		color: white !important;
+        align-self:center;
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 5px;
+        background-color:#a6a6a6;
+        -webkit-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+		-moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+		box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+		margin-top: 30px;
+    }
+    .tornarenrere{margin-bottom: 0px !important;}
+
+    button{
+    	margin-left: calc(50% - 25px );
+    	background-color: #80d4ff !important;
+    }
+
+
+
+</style>
+
+
+{% endblock %}
+
+
+
 {% block body -%}
-    <h1>Eventos creation</h1>
+
+<div id="nouEvento">
+    <h1>DADES</h1>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('evento_llistar') }}">
+     
+        <a class="tornarenrere record_actions" href="{{ path('evento_llistar') }}">
             Back to the list
         </a>
-    </li>
-</ul>
+    
+</div>
 {% endblock %}

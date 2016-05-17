@@ -1,11 +1,107 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>Eventos list</h1>
+{% block css %}
 
+<style>
+
+    #content{
+        width: 100vw;
+        padding-top: 50px;
+        display: flex;
+        justify-content:center;
+    }
+
+    .noFoundTitle{
+        font-size: 50px;
+        align-self:center;
+        color:  #4d4d4d;
+    }
+    .noFoundCrea{
+        color: white !important;
+        align-self:center;
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 50px;
+        background-color: #80d4ff;
+        -webkit-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+-moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+    }
+
+    #contingutVar{
+        z-index: 10;
+        background-color: white;
+            border: 1px solid grey;
+            width: 60vw;
+            left: calc(50vw - 300px);
+            top: 25vh;
+            border-radius: 5px;
+            -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+            -moz-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+            box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+            display: flex;
+            flex-direction:column;
+            
+    }
+
+    #separacio,#separacio2{width: 100%; border-bottom: 1px solid lightgrey; margin-bottom: 30px;}
+    .modificabut:visited{color: blue;}
+    .modificabut:link{color: blue; font-weight: bold;}
+    #description{word-break: break-all;}
+    .records_list{max-width: 80vw;}
+    td{padding-left: 20px; padding-right: 20px;}
+    th{color: grey; font-size: 20px;}
+
+    #llista{
+        z-index: 10;
+        background-color: white;
+        border: 1px solid grey;
+        width: 80vw;
+        left: calc(50vw - 300px);
+        top: 25vh;
+        border-radius: 5px;
+        -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        -moz-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        display: flex;
+        flex-direction:column;
+        
+    }
+    #butCrear{margin-top: 25px;margin-bottom: 10px; align-self:flex-end; margin-right: 20px;}
+    h1{align-self:center;}
+    table{align-self:center; margin-top: 30px; margin-bottom: 30px;}
+
+    .fa-plus{margin-right: 10px; border-right: 1px solid white; padding-right: 10px;}
+
+
+</style>
+
+{% endblock %}
+
+{% block body -%}
+    {% if eventos == null %}
+    <div id="contingutVar">
+    <h1 class="noFoundTitle">No existe ningun evento</h1>
+    <a class="noFoundCrea" href="{{ path('evento_crear') }}">
+                <i class="fa fa-plus" aria-hidden="true"></i>Crea un nou event
+            </a>
+    </div>
+    {% endif %}
+
+    {% if eventos != null %}
+<div id="llista">
+
+
+    <div id="butCrear">
+        <a class="noFoundCrea" href="{{ path('evento_crear') }}"><i class="fa fa-plus" aria-hidden="true"></i>Crea un nou event</a>
+    </div><br>
+    <div id="separacio2"></div>
+    <h1>Llista Esdeveniments</h1>
     <table class="records_list">
         <thead>
             <tr>
+                <th>Num</th>
                 <th>Nombre</th>
                 <th>Dirimagen</th>
                 <th>Direccion</th>
@@ -17,32 +113,42 @@
             </tr>
         </thead>
         <tbody>
+    {% endif %}
         {% for evento in eventos %}
             <tr>
+                <td>---></td>
                 <td>{{ evento.nombre }}</a></td>
                 <td>{{ evento.dirimagen }}</td>
                 <td>{{ evento.direccion }}</td>
                 <td>{{ evento.ciudad }}</td>
+
+                {% if evento.descripcion|length > 30 %}
+
+                <td>{{ evento.descripcion|slice(0,30) ~ '...'}}</td>
+
+                {% else %}
+
                 <td>{{ evento.descripcion }}</td>
-                <td>{{ evento.tipo }}</td>
+
+                {% endif %}
+
+
+                <td id="description">{{ evento.tipo }}</td>
                 <td>{{ evento.idevento }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('evento_modificar', { 'id': evento.idevento }) }}">Modificar</a>
+                        <a class="modificabut" href="{{ path('evento_modificar', { 'id': evento.idevento }) }}">Modificar</a>
                     </li>
                 </ul>
                 </td>
             </tr>
+            
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('evento_crear') }}">
-                Crea un nou event
-            </a>
-        </li>
-    </ul>
+</div>
+        
+
     {% endblock %}
