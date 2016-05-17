@@ -57,7 +57,7 @@ class AdminController extends Controller
             $usuari->setSalt(md5(time()));
             $passwordCodificado = $encoder->encodePassword($usuari->getPassword(),$usuari->getSalt());
             $usuari->setPassword($passwordCodificado);
-            $usuari->setRoles("ROLE_ADMIN");
+            $usuari->setRoles("ROLE_EMPRESA");
             $em->persist($usuari);
             $em->flush();
             $this->get('session')->getFlashBag()->add('info','¡Enhorabuena! Te has registrado correctamente.');
