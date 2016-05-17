@@ -9,3 +9,10 @@
  	})
  }
 
+function ErrorLogin () {
+	 $('#ErrorLogin').fadeIn(function() {
+	 	$('#ErrorLogin').fadeOut(100000);
+	 });
+	 console.log('puta');
+
+}
