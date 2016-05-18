@@ -14,8 +14,7 @@
         z-index: 10;
         background-color: white;
         border: 1px solid grey;
-        width: 50vw;
-        left: calc(50vw - 300px);
+        left: calc(50vw - 650px);
         top: 25vh;
         border-radius: 5px;
         -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
@@ -23,17 +22,22 @@
         box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
         display: flex;
         flex-direction:column;
-        max-width: 500px;
-        max-height: 500px;
-        min-height: 500px;
-        min-width: 500px;
+        max-width: 1300px;
+        max-height: 1300px;
+        min-height: 600px;
+        min-width: 600px;
     }
 
-    h1{align-self:center; font-family: 'surfer';}
-    form{align-self:center;}
+    h1{align-self:center; font-family: 'menu'; margin-top: 20px;}
+
+    form{align-self:center; font-family: 'menu';
+     min-width: 1000px; max-width: 1000px; min-height: 500px; max-height: 500px;
+
+    }
+
     .record_actions{align-self:center;}
     .record_actions:visited a{color:grey !important;}
-    input{margin-top: 20px;}
+    input{margin-top: 20px; float:right;}
 
     button,.tornarenrere{
         color: white !important;
@@ -46,14 +50,41 @@
         -moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
         box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
         margin-top: 30px;
+        font-family: 'menu';
     }
-    .tornarenrere{margin-bottom: 0px !important;}
+    .tornarenrere{margin-bottom: 0px !important; margin-left: 50px; margin-top: 50px;}
 
     button{
-        margin-left: calc(50% - 25px );
-        background-color: #99ff99;
+        margin-left: 200px;
+        background-color: #99ff99 !important;
+        width: 125px;
+        align-self:center;
+        font-size: 16px;
+        margin-top: 50px;
         color: black !important;
     }
+
+    div#ianser_eventobundle_evento div{display: flex;}
+
+    label{
+        width: 50%;
+        align-self:flex-end;
+    }
+
+    select{margin-top: 20px;}
+
+    #formuTotal{
+        display: flex;
+        flex-flow:row wrap;
+
+    }
+
+    #formPart1{width: 50%;}
+    #formPart2{width: 50%;}
+
+    #blocAdalt{display: flex;}
+
+    .formNombre{margin-top: 20px; display: flex; width: 80%; margin-left: 80px;}
 
     .butttun{color: white !important;
         align-self:center;
@@ -64,34 +95,88 @@
         -webkit-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
         -moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
         box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
-        margin-top: 30px;
+        margin-top: 50px;
         align-self:center;
         margin-right: 15px;
         font-weight: bold;
+        margin-left: 30px;
     }
 
     #butonsMoure{display: flex; justify-content:center;}
-    /*.enrere:link{
-        color: black !important;
-    }
-    .enrere:visited{
-        color:black !important;
-    }*/
+
 
 </style>
 
 
 {% endblock %}
 
+{% block js %}
+
+    <script type="text/javascript">
+
+
+
+    </script>
+
+
+{% endblock %}
+
+
 {% block body -%}
 
 <div id="nouEvento">
-    <h1>Modifica</h1>
+    
+    <h1>MODIFICA L'ESDEVENIMENT</h1>
+    {{ form_start(form) }}
+
+    <div id="formuTotal">
 
 
-    {{ form(form) }}
+            <div id="formPart1">
+                <div class="formNombre">
+                {{ form_label(form.nombre) }}{{ form_widget(form.nombre) }}
+                </div>
 
-    <div id="butonsMoure">
+                <div class="formNombre">
+                {{ form_label(form.imageFile) }}{{ form_widget(form.imageFile) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.direccion) }}{{ form_widget(form.direccion) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.ciudad) }}{{ form_widget(form.ciudad) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.tipo) }}{{ form_widget(form.tipo) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.aforo) }}{{ form_widget(form.aforo) }}
+                </div>
+
+            </div>
+            
+            <div id="formPart2">
+
+                <div class="formNombre" id="descripcioInput">
+                {{ form_label(form.descripcion) }}{{ form_widget(form.descripcion) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.edad) }}{{ form_widget(form.edad) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.gratuito) }}{{ form_widget(form.gratuito) }}
+                </div>
+
+            </div>
+    {{ form_end(form) }}
+     
+        <div id="butonsMoure">
             <a class="butttun record_actions enrere" href="{{ path('evento_llistar') }}">
                 Tornar a la llista d'events
             </a>
@@ -101,5 +186,8 @@
                 Eliminar
             </a>
     </div>
+
+    </div>
+    
 </div>
 {% endblock %}

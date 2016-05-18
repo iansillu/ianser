@@ -1,15 +1,40 @@
 {% extends '::base.html.twig' %}
 
+{% block css %}
+
+<style>
+
+	#content2{
+		margin-top: 50px;
+		width: 300px;
+		height: 400px;
+		background-color: white;
+		margin-left: 300px;
+		display: flex;
+		flex-direction: column;
+		justify-content:center;
+		}
+
+	.torna:link{color: black;}
+	.torna:visited{color:black;}
+
+</style>
+
+{% endblock %}
+
+
 {% block body -%}
+<div id="content2">
     <h1>Crear usuari</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('admin_llistar') }}">
+        <a class="torna" href="{{ path('admin_llistar') }}">
             Tornar a la llista
         </a>
     </li>
 </ul>
+</div>
 {% endblock %}

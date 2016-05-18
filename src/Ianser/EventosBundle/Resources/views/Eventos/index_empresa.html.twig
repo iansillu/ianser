@@ -76,6 +76,17 @@ box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
 
     #fotoCartel{max-width: 100px;}
 
+    *{font-family: 'menu';}
+
+    td{
+        border-bottom: 1px solid lightgrey;
+        padding-bottom: 5px;
+    }
+    th{
+        margin-bottom: 15px;
+    }
+    
+
 
 </style>
 
@@ -84,9 +95,9 @@ box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
 {% block body -%}
     {% if eventos == null %}
     <div id="contingutVar">
-    <h1 class="noFoundTitle">No existe ningun evento</h1>
+    <h1 class="noFoundTitle">No existeix cap esdeveniment</h1>
     <a class="noFoundCrea" href="{{ path('evento_crear') }}">
-                <i class="fa fa-plus" aria-hidden="true"></i>Crea un nou event
+                <i class="fa fa-plus" aria-hidden="true"></i>Crea un nou esdeveniment
             </a>
     </div>
     {% endif %}
@@ -96,7 +107,7 @@ box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
 
 
     <div id="butCrear">
-        <a class="noFoundCrea" href="{{ path('evento_crear') }}"><i class="fa fa-plus" aria-hidden="true"></i>Crea un nou event</a>
+        <a class="noFoundCrea" href="{{ path('evento_crear') }}"><i class="fa fa-plus" aria-hidden="true"></i>Crea un nou esdeveniment</a>
     </div><br>
     <div id="separacio2"></div>
     <h1>Llista Esdeveniments</h1>
@@ -116,7 +127,7 @@ box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
         <tbody>
     {% endif %}
         {% for evento in eventos %}
-            <tr>
+            <tr id="entraIndividual">
                 <td><img id="fotoCartel" src="{{ vich_uploader_asset(evento, 'imageFile') }}" /> </td>
                 <td>{{ evento.nombre }}</a></td>
                 <td>{{ evento.direccion }}</td>
@@ -143,6 +154,7 @@ box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
                 </ul>
                 </td>
             </tr>
+
             
         {% endfor %}
         </tbody>
