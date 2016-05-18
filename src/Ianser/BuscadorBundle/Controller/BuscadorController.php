@@ -27,12 +27,16 @@ class BuscadorController extends Controller
         if ($form->isValid()) {
             $qb = $em->createQueryBuilder();
             $qb->select('e')->from('IanserEventosBundle:Evento', 'e');
-                $qb->andwhere("e.nombre = :nom");
-                $qb->setParameter("nom", 'kemfks');
-                
-//                ->orderBy('u.name', 'ASC')
-//                ->setParameter('identifier', 100);
-            //$eventos= $em->getRepository('IanserEventosBundle:Evento')->findAll();
+            
+            if(!is_null($evento->getNombre())){
+               $qb->andwhere("e.nombre LIKE :nom");
+               $qb->setParameter("nom", '%'.$evento->getNombre().'%');
+            }
+            
+            
+//            $qb->andwhere("e.ciudad LIKE :ciudad");
+//            $qb->setParameter("ciudad", '%klm%');
+
             $query= $qb->getQuery();
 
             return $this->render("IanserBuscadorBundle:Default:eventos_filtrats.html.twig", array('eventos' => $query->getResult()));

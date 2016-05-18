@@ -79,7 +79,7 @@ class EventosController extends Controller
                 $evento->setRandomString();
                 $em->persist($evento);
                 $em->flush();
-                return $this->redirect($this->generateUrl('evento_modificar', array('id' => $id)));
+                return $this->redirect($this->generateUrl('evento_llistar', array('id' => $id)));
             }
 
            return $this->render("IanserEventosBundle:Eventos:edit.html.twig", array('form'=>$form->createView(), 'evento'=>$evento));

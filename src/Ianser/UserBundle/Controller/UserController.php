@@ -57,7 +57,6 @@ class UserController extends Controller
         $usuari_loguejat= $this->getUser();
         
         if ($usuari_loguejat===$usuari){
-            $usuari = $em->getRepository('IanserUserBundle:User')->find($id);
             $events_usuari= $em->getRepository('IanserEventosBundle:Evento')->findBy(array("fkuser"=>$usuari));
             foreach($events_usuari as $event){
                 $em->remove($event);
