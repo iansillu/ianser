@@ -70,4 +70,50 @@ class AdminController extends Controller
         
     }
     
+    /**
+     * @Route("/actualitzar/{id}", name="admin_modificar")
+     */
+    public function modificarAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usuari = $em->getRepository('IanserUserBundle:User')->find($id);
+        $usuari_loguejat= $this->getUser();
+        
+        
+        $form=$this->createForm(new UserType(), $usuari );
+        $form->add('Modificar','submit');
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em->flush();
+            return $this->redirect($this->generateUrl('admin_portada', array('id' => $id)));
+        }
+
+        return $this->render("IanserBaseBundle:Default:edit.html.twig", array('form'=>$form->createView(), 'usuari'=>$usuari));
+       
+        
+        
+
+    }
+    /**
+     * @Route("/eliminar/{id}", name="admin_eliminar")
+     */
+    public function eliminarAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $usuari = $em->getRepository('IanserUserBundle:User')->find($id);
+        $events_usuari= $em->getRepository('IanserEventosBundle:Evento')->findBy(array("fkuser"=>$usuari));
+        foreach($events_usuari as $event){
+            $em->remove($event);
+            $em->flush();
+        }
+        $em->remove($usuari);
+        $em->flush();
+        return $this->redirect($this->generateUrl("admin_portada"));
+        
+        
+        
+    }
+    
 }

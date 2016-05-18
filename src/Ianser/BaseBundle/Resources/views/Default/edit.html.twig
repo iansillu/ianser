@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Editar usuari</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li><a href='{{ path('admin_eliminar', {'id': usuari.iduser}) }}'/>Eliminar compte</li>
+</ul>
+{% endblock %}
