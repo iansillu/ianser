@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Eventos list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dirimagen</th>
+                <th>Direccion</th>
+                <th>Ciudad</th>
+                <th>Descripcion</th>
+                <th>Tipo</th>
+                <th>Idevento</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evento in eventos %}
+            <tr>
+                <td>{{ evento.nombre }}</a></td>
+                <td>{{ evento.dirimagen }}</td>
+                <td>{{ evento.direccion }}</td>
+                <td>{{ evento.ciudad }}</td>
+                <td>{{ evento.descripcion }}</td>
+                <td>{{ evento.tipo }}</td>
+                <td>{{ evento.idevento }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('evento_modificar', { 'id': evento.idevento }) }}">Modificar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock %}

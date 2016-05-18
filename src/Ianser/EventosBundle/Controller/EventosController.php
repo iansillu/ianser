@@ -74,9 +74,9 @@ class EventosController extends Controller
             $form->add('submit', 'submit', array('label' => 'Modificar'));
             $form->handleRequest($request);
             
-            $tmp_imatge= $evento->getDirimagen();
             
             if ($form->isValid()) {
+                $evento->setRandomString();
                 $em->persist($evento);
                 $em->flush();
                 return $this->redirect($this->generateUrl('evento_modificar', array('id' => $id)));

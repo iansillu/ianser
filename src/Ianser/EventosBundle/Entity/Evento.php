@@ -112,6 +112,10 @@ class Evento
         return $this->randomstring;
     }
     
+    public function setRandomString(){
+        $this->randomstring = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
+    }
+    
     
     /**
      * Set nombre
