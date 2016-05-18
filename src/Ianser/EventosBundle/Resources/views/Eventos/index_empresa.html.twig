@@ -74,6 +74,8 @@ box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
 
     .fa-plus{margin-right: 10px; border-right: 1px solid white; padding-right: 10px;}
 
+    #fotoCartel{max-width: 100px;}
+
 
 </style>
 
@@ -101,9 +103,8 @@ box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
     <table class="records_list">
         <thead>
             <tr>
-                <th>Num</th>
+                <th>Cartel</th>
                 <th>Nombre</th>
-                <th>Dirimagen</th>
                 <th>Direccion</th>
                 <th>Ciudad</th>
                 <th>Descripcion</th>
@@ -116,9 +117,8 @@ box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
     {% endif %}
         {% for evento in eventos %}
             <tr>
-                <td>---></td>
+                <td><img id="fotoCartel" src="{{ vich_uploader_asset(evento, 'imageFile') }}" /> </td>
                 <td>{{ evento.nombre }}</a></td>
-                <td><img src="{{ vich_uploader_asset(evento, 'imageFile') }}" /> </td>
                 <td>{{ evento.direccion }}</td>
                 <td>{{ evento.ciudad }}</td>
 

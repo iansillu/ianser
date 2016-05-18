@@ -1,10 +1,11 @@
 <html>
 <head>
-    {% block javascripts %}{% endblock %}
-    {% block css %}{% endblock %}
+    
     <title>I'anser</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    {% block js %}{% endblock %}
+    {% block css %}{% endblock %}
     <script>
 
     $(function() {
@@ -23,6 +24,11 @@
     @font-face{
             font-family: 'surfer';
             src: url("{{ asset('fonts/ianser.ttf') }}");
+        }
+
+    @font-face{
+            font-family: 'menu';
+            src: url("{{ asset('fonts/MuseoSansCyrl.otf') }}");
         }
     
     body{
@@ -52,12 +58,12 @@
 
     .menuElement{flex-grow:1; height: auto; text-align: center; border-left: 1px solid grey; display: flex; align-items:center; justify-content:center; font-size: 20px; color: white;}
 
-    #logo{text-align: center; width: 100%;}
+    #logo{text-align: center; width: 80%;}
     #logoSpan{font-size: 90px; font-family: surfer; color: white;}
 
     #chat{display: flex;}
     .chatelem{flex-grow:1;}
-    #menus{display: flex; width: 100%;}
+    #menus{display: flex; width: 100%; font-family: 'menu'; font-weight: 100; margin-right: 50px;}
     #content{}
 
     a:link{text-decoration: none;}
@@ -77,15 +83,15 @@
 
     <div id="menus" >
         <div id="chat" class="menuElement">
-            <i class="fa fa-comments fa-2x chatelem" aria-hidden="true"></i><span class="chatelem">Chat</span>
+            <i class="fa fa-comments fa-2x chatelem" aria-hidden="true"></i><span class="chatelem">CHAT</span>
         </div>
 
-        <div id="buscar" class="menuElement"><span>Buscar</span></div>
+        <div id="buscar" class="menuElement"><span>BUSCAR</span></div>
 
-        <div id="misEventos" class="menuElement"><a href="{{ path('evento_llistar') }}"><span>Mis Eventos</span></a>
+        <div id="misEventos" class="menuElement"><a href="{{ path('evento_llistar') }}"><span>ESDEVENIMENTS</span></a>
         </div>
 
-        <div id="usuario" class="menuElement"><span>Usuario</span></div>
+        <div id="usuario" class="menuElement"><span>EL MEU COMPTE</span></div>
 
         <div id="info" class="menuElement"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></div>
     </div>
