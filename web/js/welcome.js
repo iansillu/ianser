@@ -11,7 +11,7 @@
 
 function ErrorLogin () {
 	 $('#ErrorLogin').fadeIn(function() {
-	 	$('#ErrorLogin').fadeOut(100000);
+	 	$('#ErrorLogin').fadeOut(10000);
 	 });
 	 console.log('puta');
 
