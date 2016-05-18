@@ -16,7 +16,7 @@ class EventoType extends AbstractType
     {
         $builder
             ->add('nombre', 'text', array('label'=>"Nom"))
-            ->add('dirimagen', 'file', array('label'=>"Imatge", 'data_class' => null))
+            ->add('imageFile', 'vich_file', array('required'=>true, 'allow_delete'=> false, 'download_link'=>false, 'label'=>"Imatge"))
             ->add('direccion', 'text', array('label'=>"Carrer"))
             ->add('ciudad', 'text', array('label'=>"Ciutat"))
             ->add('descripcion', 'text', array('label'=>"Descripció"))

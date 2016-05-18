@@ -3,6 +3,8 @@
 namespace Ianser\EventosBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Eventos
@@ -23,16 +25,12 @@ class Evento
     
     /**
      * @Vich\UploadableField(mapping="imatges_events", fileNameProperty="dirimagen")
-     * 
-     * @var File
      */
     private $imageFile;
     
     
     /**
-     * @var string
-     *
-     * @ORM\Column(name="dirImagen", type="string", length=300, nullable=false)
+     * @ORM\Column(type="string", name="dirImagen", type="string", length=300, nullable=true)
      */
     private $dirimagen;
 
@@ -104,6 +102,17 @@ class Evento
      */
     private $fkuser;
 
+    
+    private $randomstring;
+    
+    public function __construct(){
+        $this->randomstring = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
+    }
+    public function getRandomString(){
+        return $this->randomstring;
+    }
+    
+    
     /**
      * Set nombre
      *
@@ -302,6 +311,12 @@ class Evento
     public function getImageFile()
     {
         return $this->imageFile;
+    }
+    
+    public function setImageFile(File $imatge = null)
+    {
+        return $this->imageFile = $imatge;
+
     }
     
     public function __toString() {

@@ -45,7 +45,6 @@ class EventosController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            var_dump($evento);
             $em = $this->getDoctrine()->getManager();
             $evento->setFkuser($this->getUser());
             $em->persist($evento);
@@ -74,8 +73,11 @@ class EventosController extends Controller
             $form=$this->createForm(new EventoType(), $evento );
             $form->add('submit', 'submit', array('label' => 'Modificar'));
             $form->handleRequest($request);
-
+            
+            $tmp_imatge= $evento->getDirimagen();
+            
             if ($form->isValid()) {
+                $em->persist($evento);
                 $em->flush();
                 return $this->redirect($this->generateUrl('evento_modificar', array('id' => $id)));
             }
