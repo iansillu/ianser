@@ -16,7 +16,6 @@ class BuscadorType extends AbstractType
     {
         $builder
             ->add('nombre', 'text', array('label'=>"Nom", 'required'=>false))
-            ->add('direccion', 'text', array('label'=>"Carrer", 'required'=>false))
             ->add('ciudad', 'text', array('label'=>"Ciutat", 'required'=>false))
             ->add('tipo', 'choice', array(
                 'choices'=>array(

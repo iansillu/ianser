@@ -1,4 +1,120 @@
 {% extends '::base.html.twig' %}
+
+{% block css %}
+
+	<style>
+
+	#content{
+        width: 100vw;
+        padding-top: 50px;
+        display: flex;
+        justify-content:center;
+    }
+
+    h1{align-self:center; font-family: 'menu'; margin-top: 20px; margin-bottom: 5px;}
+    h4{align-self:center; font-family: 'menu'; margin: 0;}
+
+    form{align-self:center; font-family: 'menu';
+			max-width: 500px;
+			max-height: 600px;
+			min-height: 600px;
+			min-width: 500px;
+
+    }
+
+    input{margin-top: 20px; float:right;}
+
+    label{
+        width: 50%;
+        align-self:flex-end;
+    }
+
+    select{margin-top: 20px;}
+
+	#nouEvento{
+	        z-index: 10;
+	        background-color: white;
+	        border: 1px solid grey;
+	        left: calc(50vw - 650px);
+	        top: 25vh;
+	        border-radius: 5px;
+	        -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+	        -moz-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+	        box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+	        display: flex;
+	        flex-direction:column;
+	        max-width: 500px;
+	        max-height: 520px;
+	        min-height: 520px;
+	        min-width: 500px;
+	    }
+
+	    #formuTotal{
+        display: flex;
+        flex-flow:row wrap;
+        max-width: 500px;
+        max-height: 350px;
+        min-height: 350px;
+        min-width: 500px;
+
+    }
+
+    #formPart1{width: 100%;}
+
+    .formNombre{margin-top: 20px; display: flex; width: 80%; margin-left: 80px;}
+
+    button{
+    	width: 100px;
+    	margin-top: 30px;
+    	padding-top: 10px;
+    	padding-bottom: 10px;
+    	margin-left: calc(50% - 50px);
+    }
+
+	</style>
+
+{% endblock %}
+
+
 {% block body -%}
-    {{form(form)}}
+
+<div id="nouEvento">
+	<h1>FILTRE</h1>
+	<h4>Estableix els filtres</h4>
+    
+    <div id="formuTotal">
+
+
+            <div id="formPart1">
+                <div class="formNombre">
+                {{ form_label(form.nombre) }}{{ form_widget(form.nombre) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.ciudad) }}{{ form_widget(form.ciudad) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.tipo) }}{{ form_widget(form.tipo) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.aforo) }}{{ form_widget(form.aforo) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.edad) }}{{ form_widget(form.edad) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.gratuito) }}{{ form_widget(form.gratuito) }}
+                </div>
+
+            </div>
+    </div>
+    {{ form_end(form) }}
+
+
+</div>
+
 {% endblock %}

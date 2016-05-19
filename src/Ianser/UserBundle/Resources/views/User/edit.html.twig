@@ -1,11 +1,191 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>Editar usuari</h1>
 
-    {{ form(form) }}
+{% block css %}
 
-        <ul class="record_actions">
-    <li><a href='{{ path('usuari_eliminar', {'id': usuari.iduser}) }}'/>Eliminar compte</li>
-</ul>
+<style type="text/css">
+    #content{
+        width: 100vw;
+        padding-top: 50px;
+        display: flex;
+        justify-content:center;
+    }
+
+    #nouEvento{
+        z-index: 10;
+        background-color: white;
+        border: 1px solid grey;
+        left: calc(50vw - 650px);
+        top: 25vh;
+        border-radius: 5px;
+        -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        -moz-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        display: flex;
+        flex-direction:column;
+        max-width: 500px;
+        max-height: 650px;
+        min-height: 650px;
+        min-width: 500px;
+    }
+
+    h1{align-self:center; font-family: 'menu'; margin-top: 20px;}
+
+    form{align-self:center; font-family: 'menu';
+     max-width: 500px;
+        max-height: 600px;
+        min-height: 600px;
+        min-width: 500px;
+
+    }
+
+    .record_actions{align-self:center;}
+    .record_actions:visited a{color:grey !important;}
+    input{margin-top: 20px; float:right;}
+
+    button,.tornarenrere{
+        color: white !important;
+        align-self:center;
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 5px;
+        background-color:#a6a6a6;
+        -webkit-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        -moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        margin-top: 30px;
+        font-family: 'menu';
+    }
+    .tornarenrere{margin-bottom: 0px !important; margin-left: 50px; margin-top: 50px;}
+
+    button{
+        background-color: #99ff99 !important;
+        width: 138px;
+        align-self:center;
+        font-size: 16px;
+        color: black !important;
+        margin-bottom: 100px;
+        margin-left: 188px;
+    }
+
+    div#ianser_eventobundle_evento div{display: flex;}
+
+    label{
+        width: 50%;
+        align-self:flex-end;
+    }
+
+    select{margin-top: 20px;}
+
+    #formuTotal{
+        display: flex;
+        flex-flow:row wrap;
+        max-width: 500px;
+        max-height: 550px;
+        min-height: 550px;
+        min-width: 500px;
+
+    }
+
+    #formPart1{width: 100%;}
+    #formPart2{width: 50%;}
+
+    #blocAdalt{display: flex;}
+
+    .formNombre{margin-top: 20px; display: flex; width: 80%; margin-left: 80px;}
+
+    .butttun{color: white !important;
+        align-self:center;
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 5px;
+        background-color:#a6a6a6;
+        -webkit-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        -moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+        margin-top: 50px;
+        align-self:center;
+        margin-right: 15px;
+        font-weight: bold;
+        margin-left: 30px;
+    }
+
+    #butonsMoure{margin-left: 157px;}
+
+    button < div{height: 50px;}
+
+
+</style>
+
+
 {% endblock %}
+
+
+{% block body -%}
+
+<div id="nouEvento">
+    
+    <h1>MODIFICA DADES</h1>
+
+    {{ form_start(form) }}
+
+    <div id="formuTotal">
+
+
+            <div id="formPart1">
+                <div class="formNombre">
+                {{ form_label(form.nombre) }}{{ form_widget(form.nombre) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.apellido) }}{{ form_widget(form.apellido) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.apellido2) }}{{ form_widget(form.apellido2) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.ciudad) }}{{ form_widget(form.ciudad) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.email) }}{{ form_widget(form.email) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.password) }}{{ form_widget(form.password) }}
+                </div>
+
+                {{ form_end(form) }}
+
+                <div id="butonsMoure">
+                <a class="butttun record_actions" style="background-color: #ff4d4d;" href="{{ path('usuari_eliminar',{'id': usuari.iduser}) }}">Eliminar compte</a>
+                </div>
+
+            </div>
+    </div>
+    
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
