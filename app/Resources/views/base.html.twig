@@ -86,12 +86,12 @@
             <i class="fa fa-comments fa-2x chatelem" aria-hidden="true"></i><span class="chatelem">CHAT</span>
         </div>
 
-        <div id="buscar" class="menuElement"><span>BUSCAR</span></div>
+        <div id="buscar" class="menuElement"><a href="{{ path('buscador_filtre') }}"><span>BUSCAR</span></div></a>
 
         <div id="misEventos" class="menuElement"><a href="{{ path('evento_llistar') }}"><span>ESDEVENIMENTS</span></a>
         </div>
 
-        <div id="usuario" class="menuElement"><span>EL MEU COMPTE</span></div>
+        <div id="usuario" class="menuElement"><a href="{{ path('usuari_modificar') }}"><span>EL MEU COMPTE</span></div></a>
 
         <div id="info" class="menuElement"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></div>
     </div>

@@ -47,17 +47,12 @@
                 <td style="border:1px solid black;">{{ usuari.roles[0] }}</td>
                 <td style="border:1px solid black;">
                 <ul>
+                   
                     <li>
-                        <a class="click" href="{{ path('usuari_modificar', { 'id': usuari.iduser }) }}">Editar</a>
+                        <a class="click" href="{{ path('admin_modificar', { 'id': usuari.iduser }) }}">Editar</a>
                     </li>
                     <li>
-                        <a class="click" href="{{ path('usuari_eliminar', { 'id': usuari.iduser }) }}">Eliminar</a>
-
-                        <a href="{{ path('admin_modificar', { 'id': usuari.iduser }) }}">Editar</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin_eliminar', { 'id': usuari.iduser }) }}">Eliminar</a>
-
+                        <a class="click" href="{{ path('admin_eliminar', { 'id': usuari.iduser }) }}">Eliminar</a>
                     </li>
                 </ul>
                 </td>
@@ -68,9 +63,7 @@
 
         <ul>
         <li>
-            <a class="click" href="{{ path('usuari_crear') }}">
-            <a href="{{ path('admin_crear') }}">
-
+            <a class="click" href="{{ path('admin_crear') }}">
                 Crear un nou usuari
             </a>
         </li>
