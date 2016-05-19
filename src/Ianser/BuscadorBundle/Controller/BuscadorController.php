@@ -33,6 +33,21 @@ class BuscadorController extends Controller
                $qb->setParameter("nom", '%'.$evento->getNombre().'%');
             }
             
+            if(!is_null($evento->getDireccion())){
+               $qb->andwhere("e.direccion LIKE :direccio");
+               $qb->setParameter("direccio", '%'.$evento->getDireccion().'%');
+            }
+            
+            if(!is_null($evento->getCiudad())){
+               $qb->andwhere("e.ciudad LIKE :ciutat");
+               $qb->setParameter("ciutat", '%'.$evento->getCiudad().'%');
+            }
+            
+            if(!is_null($evento->getTipo())){
+               $qb->andwhere("e.tipo LIKE :tipo");
+               $qb->setParameter("tipo", '%'.$evento->getTipo().'%');
+            }
+            
             
 //            $qb->andwhere("e.ciudad LIKE :ciudad");
 //            $qb->setParameter("ciudad", '%klm%');

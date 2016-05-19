@@ -91,7 +91,7 @@
         <div id="misEventos" class="menuElement"><a href="{{ path('evento_llistar') }}"><span>ESDEVENIMENTS</span></a>
         </div>
 
-        <div id="usuario" class="menuElement"><a href="{{ path('usuari_modificar') }}"><span>EL MEU COMPTE</span></div></a>
+        <div id="usuario" class="menuElement"><a href="{{ path('usuari_modificar', {'id':app.user.iduser}) }}"><span>EL MEU COMPTE</span></div></a>
 
         <div id="info" class="menuElement"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></div>
     </div>

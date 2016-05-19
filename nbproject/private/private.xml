@@ -7,8 +7,13 @@
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Resources/views/Eventos/new.html.twig</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Resources/views/Eventos/index_empresa.html.twig</file>
             <file>file:/home/sergi/Escritorio/ianser/app/config/config.yml</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BaseBundle/Resources/views/Default/portada_admin.html.twig</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Resources/views/User/new.html.twig</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Resources/views/User/edit.html.twig</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Entity/Evento.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BuscadorBundle/Controller/BuscadorController.php</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Form/EventoType.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BaseBundle/Controller/AdminController.php</file>
         </group>
     </open-files>
 </project-private>
