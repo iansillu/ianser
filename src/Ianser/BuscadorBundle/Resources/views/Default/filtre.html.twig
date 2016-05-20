@@ -1,5 +1,17 @@
 {% extends '::base.html.twig' %}
 
+{% block js%}
+
+<script>
+$( document ).ready(function() {
+    $('#ianser_buscadorbundle_buscador_Buscar').html('<span id="spanBusc">Buscar</span><i class="fa fa-search fa-2x" aria-hidden="true"></i>');
+});
+
+</script>
+
+{% endblock %}
+
+
 {% block css %}
 
 	<style>
@@ -16,8 +28,8 @@
 
     form{align-self:center; font-family: 'menu';
 			max-width: 500px;
-			max-height: 600px;
-			min-height: 600px;
+			max-height: 320px;
+			min-height: 320px;
 			min-width: 500px;
 
     }
@@ -44,8 +56,8 @@
 	        display: flex;
 	        flex-direction:column;
 	        max-width: 500px;
-	        max-height: 520px;
-	        min-height: 520px;
+	        max-height: 550px;
+	        min-height: 550px;
 	        min-width: 500px;
 	    }
 
@@ -64,12 +76,17 @@
     .formNombre{margin-top: 20px; display: flex; width: 80%; margin-left: 80px;}
 
     button{
-    	width: 100px;
-    	margin-top: 30px;
+    	width: 150px;
+    	margin-top: 50px;
     	padding-top: 10px;
     	padding-bottom: 10px;
-    	margin-left: calc(50% - 50px);
+    	margin-left: calc(50% - 75px);
+        border-radius: 5px;
+        background-color: #86592d;
+        color: white;
     }
+
+    #spanBusc{margin-right: 10px; font-size: 20px;}
 
 	</style>
 
