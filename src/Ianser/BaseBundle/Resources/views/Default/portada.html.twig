@@ -27,7 +27,7 @@
 
 			<div id="registraUsuari">
 				<div id="frase"><div id="fraseSpanReg"><span span id="fraseSpan">Registra't en 0,!</span></div></div>
-				<div id="registrar"><div id="borderSpanReg"><span span id="registrarSpan">Registrar usuari</span></div></div>
+				<div id="registrar"><div id="borderSpanReg" onclick="OpcioRegistra();"><span span id="registrarSpan">Registrar usuari</span></div></div>
 			</div>
 		</div>
 
@@ -56,6 +56,51 @@
 
 			</form>
 		</div>
+	</div>
+
+	<div id="RegistraUsuari2">
+		<i class="fa fa-times fa-3x" id="tencaRegistre" aria-hidden="true"></i>
+		<h1 id="ianserRegistre">- I' ANSER -</h1>
+		{{ form_start(form) }}
+
+    <div id="formuTotal">
+
+
+            <div id="formPart1">
+
+                <div class="formNombre">
+                {{ form_label(form.nombre) }}{{ form_widget(form.nombre) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.apellido) }}{{ form_widget(form.apellido) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.apellido2) }}{{ form_widget(form.apellido2) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.ciudad) }}{{ form_widget(form.ciudad) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_label(form.email) }}{{ form_widget(form.email) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_row(form.password.first) }}
+                </div>
+
+                <div class="formNombre">
+                {{ form_row(form.password.second) }}
+                </div>
+
+                {{ form_end(form) }}
+
+
+            </div>
+    </div>
 	</div>
 
 	

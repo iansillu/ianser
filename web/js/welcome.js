@@ -9,10 +9,14 @@
  	})
  }
 
-function ErrorLogin () {
-	 $('#ErrorLogin').fadeIn(function() {
-	 	$('#ErrorLogin').fadeOut(10000);
-	 });
-	 console.log('puta');
+ function OpcioRegistra(){
+ 	$('#BenvingudaBox').fadeOut(function () {
+ 		 $('#RegistraUsuari2').fadeIn();
+ 	});
+ 	$('#tencaRegistre').click(function () {
+ 		 $('#RegistraUsuari2').fadeOut(function () {
+ 		 	 $('#BenvingudaBox').fadeIn();
+ 		 });
+ 	})
+ }
 
-}

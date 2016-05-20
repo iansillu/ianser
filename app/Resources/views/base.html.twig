@@ -8,20 +8,7 @@
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     {% block js %}{% endblock %}
     {% block css %}{% endblock %}
-    <script>
-
-    $(function() {
-    $(window).on("scroll", function() {
-        if($(window).scrollTop() > 1) {
-            $("#menuTop").addClass("activeScroll");
-        } else {
-            //remove the background property so it comes transparent again (defined in your css)
-           $("#menuTop").removeClass("activeScroll");
-        }
-    });
-});
-
-    </script>
+    
     <style>
     @font-face{
             font-family: 'surfer';
@@ -37,17 +24,10 @@
             margin: 0px;
             left: 0px;
             background-image: url("{{ asset('bg-patterns/tweed2X.png') }}");
-            overflow: scroll;
+            overflow: auto;
         }
 
-    .activeScroll{background-color: darkgrey !important;
-        position: fixed;
-        height: 60px !important;
-        transition: height 1s;
-        color: white;
-    }
-
-    #menuTop{
+    .noScroll{
         width: 100vw;
         height: 120px;
         background-color: transparent;
@@ -79,7 +59,7 @@
 </head>
 <body>
 
-<div id="menuTop">
+<div id="menuTop" class="noScroll">
         
     <div id="logo" ><span id="logoSpan">I' anser</span></div>
 
