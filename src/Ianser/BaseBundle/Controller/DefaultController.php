@@ -5,7 +5,7 @@ namespace Ianser\BaseBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Ianser\UserBundle\Form\UserType;
+use Ianser\UserBundle\Form\UserRegisterType;
 use Symfony\Component\HttpFoundation\Request;
 use Ianser\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -58,8 +58,7 @@ class DefaultController extends Controller
         }
         
         $usuari = new User();
-        $form = $this->createForm(new UserType(), $usuari );
-        $form->add('submit', 'submit', array('label' => 'Crear compte'));
+        $form = $this->createForm(new UserRegisterType(), $usuari );
         
         $form->handleRequest($request);
 
@@ -83,35 +82,5 @@ class DefaultController extends Controller
         ));
     }
     
-     /**
-     * @Route("/registro", name="usuari_crear")
-     */
-    public function registroAction(Request $request)
-    {
-        $usuari = new User();
-        $form = $this->createForm(new UserType(), $usuari );
-        $form->add('submit', 'submit', array('label' => 'Crear compte'));
-        
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            
-            $encoder = $this->get('security.encoder_factory')->getEncoder($usuari);
-            $usuari->setSalt(md5(time()));
-            $passwordCodificado = $encoder->encodePassword($usuari->getPassword(),$usuari->getSalt());
-            $usuari->setPassword($passwordCodificado);
-            $usuari->setRoles("ROLE_USUARIO");
-            $em->persist($usuari);
-            $em->flush();
-            return $this->redirect($this->generateUrl("usuario_login_check"));
-        }
-
-        return $this->render("IanserUserBundle:User:new.html.twig", array(
-            'usuari'=>$usuari,
-            'form'=>$form->createView()
-        ));
-        
-    }
     
 }

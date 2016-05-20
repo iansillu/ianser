@@ -32,7 +32,6 @@ security:
 
         
     access_control:
-    - { path: ^/registro, role: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/empresa*, role: ROLE_EMPRESA }
     - { path: ^/api, roles: [ROLE_USUARIO, ROLE_EMPRESA, ROLE_ADMIN] }
     - { path: ^/admin, role: ROLE_ADMIN }
