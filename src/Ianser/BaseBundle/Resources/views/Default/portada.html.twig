@@ -38,13 +38,15 @@
 		<i class="fa fa-times fa-3x" id="tencaIniciSesio" aria-hidden="true"></i>
 		<h1 id="ianserLogIN">- I' ANSER -</h1>
 		<div id="inputsAcc">
-			{% if error %}
-			<script>ErrorLogin();</script>
-			{% endif %}
+			{% for flashMessage in app.session.flashbag.get('login_incorrecte') %}
+                            <div class="errors">
+                                {{ flashMessage }}
+                            </div>
+                        {% endfor %}
 			<form action="{{ path('usuario_login_check') }}" method="post">
 			
 			<div id="userdiv"><input type="text" id="username" name="_username"
-			value="{{ last_username }}" / placeholder="Username"></div>
+			value="{{ last_username }}"  placeholder="Username"></div>
 			
 			<div id="passdiv"><input type="password" id="password" name="_password" placeholder="Password"/></div>
 			<div id="checkdiv"><input type="checkbox" id="no_cerrar" name="_remember_me" checked />

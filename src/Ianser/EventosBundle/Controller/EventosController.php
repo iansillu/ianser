@@ -23,8 +23,13 @@ class EventosController extends Controller
         $usuari_loguejat= $this->getUser();
         
         if($usuari_loguejat->getRoles()[0]=='ROLE_USUARIO'){
-            $eventos= $em->getRepository('IanserUserBundle:Usuarioeventos')->findBy(array('fkuser'=>$usuari_loguejat));
-            return $this->render("IanserEventosBundle:Eventos:index_usuario.html.twig", array('eventos'=>$eventos));
+            $eventos_relacionats= $em->getRepository('IanserUserBundle:Usuarioeventos')->findBy(array('fkuser'=>$usuari_loguejat));
+            $Aids_eventos= array();
+            foreach ($eventos_relacionats as $evento){
+                array_push($Aids_eventos, $evento->getFkevento());
+            }
+            
+            return $this->render("IanserEventosBundle:Eventos:index_usuario.html.twig", array('eventos'=>$Aids_eventos));
         }
         else{
            $eventos = $em->getRepository('IanserEventosBundle:Evento')->findBy(array('fkuser'=>$usuari_loguejat));
