@@ -59,7 +59,7 @@ class Usuariochats
      * @param \Ianser\UserBundle\Entity\User $fkuser
      * @return Usuariochats
      */
-    public function setFkuser(\Ianser\ChatsBundle\Entity\User $fkuser = null)
+    public function setFkuser(\Ianser\UserBundle\Entity\User $fkuser = null)
     {
         $this->fkuser = $fkuser;
 

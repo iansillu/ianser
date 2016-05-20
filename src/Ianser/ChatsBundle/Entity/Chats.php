@@ -22,9 +22,9 @@ class Chats
     private $idchat;
 
     /**
-     * @var \Ianser\EventosBundle\Entity\Eventos
+     * @var \Ianser\EventosBundle\Entity\Evento
      *
-     * @ORM\ManyToOne(targetEntity="Ianser\EventosBundle\Entity\Eventos")
+     * @ORM\ManyToOne(targetEntity="Ianser\EventosBundle\Entity\Evento")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="fkEvento", referencedColumnName="idEvento")
      * })
@@ -49,7 +49,7 @@ class Chats
      * @param \Ianser\EventosBundle\Entity\Eventos $fkevento
      * @return Chats
      */
-    public function setFkevento(\Ianser\EventosBundle\Entity\Eventos $fkevento = null)
+    public function setFkevento(\Ianser\EventosBundle\Entity\Evento $fkevento = null)
     {
         $this->fkevento = $fkevento;
 

@@ -79,10 +79,10 @@ class Usuarioeventos
     /**
      * Set fkevento
      *
-     * @param \Ianser\EventosBundle\Entity\Eventos $fkevento
+     * @param \Ianser\EventosBundle\Entity\Evento $fkevento
      * @return Usuarioeventos
      */
-    public function setFkevento(\Ianser\EventosBundle\Entity\Eventos $fkevento = null)
+    public function setFkevento(\Ianser\EventosBundle\Entity\Evento $fkevento = null)
     {
         $this->fkevento = $fkevento;
 

@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Ianser\UserBundle\IanserUserBundle(),
             new Ianser\ChatsBundle\IanserChatsBundle(),
             new Ianser\EventosBundle\IanserEventosBundle(),

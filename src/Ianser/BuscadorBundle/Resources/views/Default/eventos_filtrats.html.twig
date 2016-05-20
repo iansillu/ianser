@@ -12,7 +12,9 @@
                 <th>Ciudad</th>
                 <th>Descripcion</th>
                 <th>Tipo</th>
-                <th>Idevento</th>
+                <th>Aforo</th>
+                <th>Edad</th>
+                <th>Gratuito</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -25,11 +27,19 @@
                 <td>{{ evento.ciudad }}</td>
                 <td>{{ evento.descripcion }}</td>
                 <td>{{ evento.tipo }}</td>
-                <td>{{ evento.idevento }}</td>
+                <td>{{ evento.aforo }}</td>
+                <td>{{ evento.edad }}</td>
+                <td>{{ evento.gratuito }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('evento_modificar', { 'id': evento.idevento }) }}">Modificar</a>
+                        <a href="{{ path('buscador_detall', { 'id': evento.idevento }) }}"> +info</a>
+                    </li>
+                    <li>
+                        <div class="asistencia"> asistir al evento <p style="display:none">{{evento.idevento}}</p></div>
+                    </li>
+                    <li>
+                        <div class="chat"> afegirme al chat <p style="display:none">{{evento.idevento}}</p></div>
                     </li>
                 </ul>
                 </td>
@@ -37,6 +47,50 @@
         {% endfor %}
         </tbody>
     </table>
-
-
-    {% endblock %}
+{% endblock %}
+{% block js %}
+<script>
+$( document ).ready(function() {
+    $(".asistencia").click(function(){
+        $.ajax
+        ({
+            type: "GET",
+            url: Routing.generate('buscador_asistencia', {'id_evento': $(this).children("p").html()}),
+            context: document.body
+        }).done(
+            function(afegit)
+            {
+                //NOTA:
+                //ESTA FUNCION DEVUELVE TRUE O FALSE DEPENDIENDO DE SI HA AÑADIDO EL EVENTO O LO HA QUITADO, SI ES TRUE ESQUE LO AÑADE Y SINO QUE LO QUITA
+                if (afegit=="true"){
+                    //CAMBIA LA IMAGEN O ALGO ASI...
+                   //foto.attr("src","/images/añadido.png");
+                }
+                else{
+                   //foto.attr("src","/images/desanudañido.png");
+                }
+            });
+    });
+    $(".chat").click(function(){
+        $.ajax
+        ({
+            type: "GET",
+            url: Routing.generate('buscador_chat', {'id_evento': $(this).children("p").html()}),
+            context: document.body
+        }).done(
+            function(afegit)
+            {
+                //NOTA:
+                //ESTA FUNCION DEVUELVE TRUE O FALSE DEPENDIENDO DE SI HA AÑADIDO EL EVENTO O LO HA QUITADO, SI ES TRUE ESQUE LO AÑADE Y SINO QUE LO QUITA
+                if (afegit=="true"){
+                    //CAMBIA LA IMAGEN O ALGO ASI...
+                   //foto.attr("src","/images/añadido.png");
+                }
+                else{
+                   //foto.attr("src","/images/desanudañido.png");
+                }
+            });
+    });
+});    	
+</script>
+{% endblock %}

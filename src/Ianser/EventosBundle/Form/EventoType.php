@@ -19,7 +19,7 @@ class EventoType extends AbstractType
             ->add('imageFile', 'vich_file', array('required'=>true, 'allow_delete'=> false, 'download_link'=>false, 'label'=>"Imatge"))
             ->add('direccion', 'text', array('label'=>"Carrer"))
             ->add('ciudad', 'text', array('label'=>"Ciutat"))
-            ->add('descripcion', 'text', array('label'=>"Descripció"))
+            ->add('descripcion', 'textarea', array('label'=>"Descripció"))
             ->add('tipo', 'choice', array(
                 'choices'=>array(
                     'Al aire lliure'=> 'Al aire lliure',
