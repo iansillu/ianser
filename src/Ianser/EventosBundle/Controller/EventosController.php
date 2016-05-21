@@ -114,18 +114,24 @@ class EventosController extends Controller
         $evento = $em->getRepository('IanserEventosBundle:Evento')->find($id);
         
         if ($evento->getFkUser()==$usuari_loguejat){
+
             $chat= $em->getRepository('IanserChatsBundle:Chats')->findOneBy(array('fkevento'=>$evento));
-            $usuaris_chat= $em->getRepository('IanserUserBundle:Usuariochats')->findOneBy(array("fkchat"=>$chat));
-            $usuaris_eventos= $em->getRepository('IanserUserBundle:Usuarioeventos')->findOneBy(array("fkevento"=>$evento));
-            if(!is_null($usuaris_eventos)){
-                $em->remove($usuaris_chat);
-                $em->flush();
-            }
-            if(!is_null($usuaris_eventos)){
-                $em->remove($usuaris_eventos);
-                $em->flush();
-            }
+            $usuaris_chat= $em->getRepository('IanserUserBundle:Usuariochats')->findBy(array("fkchat"=>$chat));
+            $usuaris_eventos= $em->getRepository('IanserUserBundle:Usuarioeventos')->findBy(array("fkevento"=>$evento));
             
+            if(!is_null($usuaris_eventos)){
+                    foreach($usuaris_eventos as $relacio){
+                        $em->remove($relacio);
+                        $em->flush();
+                    }
+                }
+                
+                if(!is_null($usuaris_chat)){
+                    foreach($usuaris_chat as $relacio){
+                        $em->remove($relacio);
+                        $em->flush();
+                    }
+                }             
             
             $em->remove($chat);
             $em->flush();
