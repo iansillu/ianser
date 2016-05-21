@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Ianser\EventosBundle\Entity\Evento;
 use Ianser\EventosBundle\Form\EventoType;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Ianser\ChatsBundle\Entity\Chats;
+use Ianser\UserBundle\Entity\Usuariochats;
 
 class EventosController extends Controller
 {
@@ -53,6 +55,10 @@ class EventosController extends Controller
             $em = $this->getDoctrine()->getManager();
             $evento->setFkuser($this->getUser());
             $em->persist($evento);
+            $em->flush();
+            $chat= new Chats();
+            $chat->setFkevento($evento);
+            $em->persist($chat);
             $em->flush();
             return $this->redirect($this->generateUrl("evento_llistar"));
         }
@@ -108,6 +114,21 @@ class EventosController extends Controller
         $evento = $em->getRepository('IanserEventosBundle:Evento')->find($id);
         
         if ($evento->getFkUser()==$usuari_loguejat){
+            $chat= $em->getRepository('IanserChatsBundle:Chats')->findOneBy(array('fkevento'=>$evento));
+            $usuaris_chat= $em->getRepository('IanserUserBundle:Usuariochats')->findOneBy(array("fkchat"=>$chat));
+            $usuaris_eventos= $em->getRepository('IanserUserBundle:Usuarioeventos')->findOneBy(array("fkevento"=>$evento));
+            if(!is_null($usuaris_eventos)){
+                $em->remove($usuaris_chat);
+                $em->flush();
+            }
+            if(!is_null($usuaris_eventos)){
+                $em->remove($usuaris_eventos);
+                $em->flush();
+            }
+            
+            
+            $em->remove($chat);
+            $em->flush();
             $em->remove($evento);
             $em->flush();
             return $this->redirect($this->generateUrl("evento_llistar"));

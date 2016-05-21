@@ -46,7 +46,11 @@ class AdminController extends Controller
     {
         $usuari = new User();
         $form = $this->createForm(new UserType(), $usuari );
+        $form->remove("password");
+        $form->add('password','text', array('label'=>"Contrasenya", 'required'=>false));
+        $form->add('username');
         $form->add('submit', 'submit', array('label' => 'Crear'));
+        
         
         $form->handleRequest($request);
 

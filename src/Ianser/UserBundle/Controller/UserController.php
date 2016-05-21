@@ -73,11 +73,41 @@ class UserController extends Controller
         $usuari_loguejat= $this->getUser();
         
         if ($usuari_loguejat===$usuari){
-            $events_usuari= $em->getRepository('IanserEventosBundle:Evento')->findBy(array("fkuser"=>$usuari));
-            foreach($events_usuari as $event){
-                $em->remove($event);
-                $em->flush();
+            if($usuari->getRoles()==array('ROLE_EMPRESA')){
+                
+                $events_usuari= $em->getRepository('IanserEventosBundle:Evento')->findBy(array("fkuser"=>$usuari));
+                
+                
+                if(!is_null($events_usuari)){
+                    foreach($events_usuari as $event){
+                        $chat_relacionat= $em->getRepository('IanserChatsBundle:Chats')->findOneBy(array("fkevento"=>$event));
+                        $em->remove($chat_relacionat);
+                        $em->flush();
+                        $em->remove($event);
+                        $em->flush();
+                    }
+                }
             }
+            
+            else if($usuari->getRoles()==array('ROLE_USUARIO')){
+                $usuaris_chat= $em->getRepository('IanserUserBundle:Usuariochats')->findBy(array("fkuser"=>$usuari));
+                $usuaris_eventos= $em->getRepository('IanserUserBundle:Usuarioeventos')->findBy(array("fkuser"=>$usuari));
+                
+                if(!is_null($usuaris_eventos)){
+                    foreach($usuaris_eventos as $relacio){
+                        $em->remove($relacio);
+                        $em->flush();
+                    }
+                }
+                
+                if(!is_null($usuaris_chat)){
+                    foreach($usuaris_chat as $relacio){
+                        $em->remove($relacio);
+                        $em->flush();
+                    }
+                }  
+            }
+            
             $em->remove($usuari);
             $em->flush();
             $this->get('security.context')->setToken(null);
