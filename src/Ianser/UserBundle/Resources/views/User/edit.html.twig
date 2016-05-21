@@ -140,9 +140,10 @@ $( document ).ready(function() {
     {{ form_start(form) }}
 
     <div id="formuTotal">
-
-
             <div id="formPart1">
+                {% if canvis is defined %}
+                    <div id="errors"> <p>Els canvis han sigut efectuats correctament. <p></div>
+                {% endif %}
                 <div class="formNombre">
                 {{ form_label(form.nombre) }}{{ form_widget(form.nombre) }}
                 </div>

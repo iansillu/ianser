@@ -14,14 +14,14 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
-
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class DefaultController extends Controller
 {
 
     /**
      * @Route("/redirect", name="redirect_login")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function redirectLoginAction(){
 
@@ -44,7 +44,7 @@ class DefaultController extends Controller
     
     /**
      * @Route("/", name="portada")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
     public function loginAction(Request $request)
     {
@@ -53,8 +53,7 @@ class DefaultController extends Controller
         $error = $authenticationUtils->getLastAuthenticationError();
         
         if ($error) {
-            $sesion->getFlashBag()->set('login_incorrecte', "Contrasenya incorrecte o usuari inexistent.");
-            
+            $sesion->getFlashBag()->set('login_incorrecte', "Contrasenya incorrecte o usuari inexistent.");  
         }
         
         $usuari = new User();
@@ -72,7 +71,10 @@ class DefaultController extends Controller
             $usuari->setRoles("ROLE_USUARIO");
             $em->persist($usuari);
             $em->flush();
-            return $this->redirect($this->generateUrl("usuario_login_check"));
+            $providerKey = 'main'; 
+            $token = new UsernamePasswordToken($usuari, null, $providerKey, $usuari->getRoles());
+            $this->container->get('security.context')->setToken($token);
+            return new RedirectResponse($this->generateUrl("redirect_login"));
         }
         
         return $this->render('IanserBaseBundle:Default:portada.html.twig', array(

@@ -17,7 +17,7 @@ class UserType extends AbstractType
         
                 
         $builder
-            ->add('password','text', array('label'=>"Contrasenya"))
+            ->add('password','text', array('label'=>"Contrasenya", 'required'=>false))
             ->add('nombre','text', array('label'=>"Nom"))
             ->add('apellido','text', array('label'=>"Primer cognom"))
             ->add('apellido2','text', array('label'=>"Segon cognom"))

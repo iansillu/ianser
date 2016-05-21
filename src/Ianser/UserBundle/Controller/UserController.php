@@ -28,14 +28,30 @@ class UserController extends Controller
         $usuari = $em->getRepository('IanserUserBundle:User')->find($id);
         $usuari_loguejat= $this->getUser();
         
+        $passwordOriginal = $usuari->getPassword();
+        $usuari->setPassword("");
+        
+        $form=$this->createForm(new UserType(), $usuari );
+        
         if ($usuari_loguejat===$usuari){
-            $form=$this->createForm(new UserType(), $usuari );
+            
             $form->add('Modificar','submit');
             $form->handleRequest($request);
 
             if ($form->isValid()) {
+                if($usuari->getPassword()==""){
+                    $usuari->setPassword($passwordOriginal);
+                }
+                else{
+                    $encoder = $this->get('security.encoder_factory')->getEncoder($usuari);
+                    $passwordCodificado = $encoder->encodePassword(
+                    $usuari->getPassword(),
+                    $usuari->getSalt()
+                    );
+                    $usuari->setPassword($passwordCodificado);
+                }
                 $em->flush();
-                return $this->redirect($this->generateUrl('usuari_modificar', array('id' => $id)));
+                return $this->render("IanserUserBundle:User:edit.html.twig", array('form'=>$form->createView(), 'usuari'=>$usuari, 'canvis'=>'OK'));
             }
 
             return $this->render("IanserUserBundle:User:edit.html.twig", array('form'=>$form->createView(), 'usuari'=>$usuari));

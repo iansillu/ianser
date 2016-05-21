@@ -16,7 +16,7 @@ class UserRegisterType extends AbstractType
     {
         
         $builder
-            ->add('username','text', array('label'=>"Username"))
+            ->add('username','text', array('label'=>"Username",'required' => true))
             ->add('password', 'repeated', array(
                 'type' => 'password',
                 'invalid_message' => 'Les contrasenyes tenen que coincidir',
@@ -25,10 +25,10 @@ class UserRegisterType extends AbstractType
                 'first_options'  => array('label' => 'Contrasenya'),
                 'second_options' => array('label' => 'Repeteix contrasenya')))
             ->add('nombre','text', array('label'=>"Nom"))
-            ->add('apellido','text', array('label'=>"Primer cognom"))
-            ->add('apellido2','text', array('label'=>"Segon cognom"))
-            ->add('ciudad','text', array('label'=>"Ciutat"))
-            ->add('email','email')
+            ->add('apellido','text', array('label'=>"Primer cognom",'required' => true))
+            ->add('apellido2','text', array('label'=>"Segon cognom",'required' => true))
+            ->add('ciudad','text', array('label'=>"Ciutat",'required' => true))
+            ->add('email','email', array('required' => true))
             ->add('submit', 'submit', array('label' => 'Crear compte'))
             ;
     }
