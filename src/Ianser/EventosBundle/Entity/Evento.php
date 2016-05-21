@@ -75,6 +75,8 @@ class Evento
      * @var integer
      *
      * @ORM\Column(name="aforo", type="integer")
+     * @Assert\Range(min = 0)
+     *      
      */
     private $aforo;
     
@@ -82,6 +84,7 @@ class Evento
      * @var integer
      *
      * @ORM\Column(name="edad", type="integer")
+     * @Assert\Range(min = 0, max=120)
      */
     private $edad;
     

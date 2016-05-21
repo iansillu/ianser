@@ -27,8 +27,8 @@ class EventoType extends AbstractType
                     ),
                 'choices_as_values'=>true,
                 'label'=>"Entorn"))
-            ->add('aforo','integer')
-            ->add('edad','integer', array('label'=>"Edat"))
+            ->add('aforo','integer', array('attr'=>array('min'=>0)))
+            ->add('edad','integer', array('label'=>"Edat", 'attr'=>array('min'=>0, 'max'=>120)))
             ->add('gratuito', 'choice', array(
                 'choices'=>array(
                     'Si'=> 1,

@@ -77,8 +77,9 @@ class EventosController extends Controller
         if ($evento->getFkUser()==$usuari_loguejat){
             $form=$this->createForm(new EventoType(), $evento );
             $form->add('submit', 'submit', array('label' => 'Modificar'));
+            $form->remove('imageFile');
+            $form->add('imageFile', 'vich_file', array('required'=>false, 'allow_delete'=> false, 'download_link'=>false, 'label'=>"Imatge"));
             $form->handleRequest($request);
-            
             
             if ($form->isValid()) {
                 $evento->setRandomString();
