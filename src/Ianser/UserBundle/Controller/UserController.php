@@ -80,9 +80,6 @@ class UserController extends Controller
                 
                 if(!is_null($events_usuari)){
                     foreach($events_usuari as $event){
-                        $chat_relacionat= $em->getRepository('IanserChatsBundle:Chats')->findOneBy(array("fkevento"=>$event));
-                        $em->remove($chat_relacionat);
-                        $em->flush();
                         $em->remove($event);
                         $em->flush();
                     }
@@ -90,7 +87,6 @@ class UserController extends Controller
             }
             
             else if($usuari->getRoles()==array('ROLE_USUARIO')){
-                $usuaris_chat= $em->getRepository('IanserUserBundle:Usuariochats')->findBy(array("fkuser"=>$usuari));
                 $usuaris_eventos= $em->getRepository('IanserUserBundle:Usuarioeventos')->findBy(array("fkuser"=>$usuari));
                 
                 if(!is_null($usuaris_eventos)){
@@ -99,13 +95,7 @@ class UserController extends Controller
                         $em->flush();
                     }
                 }
-                
-                if(!is_null($usuaris_chat)){
-                    foreach($usuaris_chat as $relacio){
-                        $em->remove($relacio);
-                        $em->flush();
-                    }
-                }  
+                 
             }
             
             $em->remove($usuari);

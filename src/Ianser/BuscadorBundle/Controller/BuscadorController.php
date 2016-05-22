@@ -9,9 +9,7 @@ use Ianser\BuscadorBundle\Form\BuscadorType;
 use Ianser\EventosBundle\Entity\Evento;
 use Doctrine\ORM;
 use Ianser\UserBundle\Entity\Usuarioeventos;
-use Ianser\UserBundle\Entity\Usuariochats;
 use Symfony\Component\HttpFoundation\Response;
-use Ianser\ChatsBundle\Entity\Chats;
 /**
 * @Route("/buscador")
 */
@@ -104,34 +102,7 @@ class BuscadorController extends Controller
         }
         
     }
-    
-    /**
-     * @Route("/chat/{id_evento}", name="buscador_chat", options = { "expose" = true })
-     */
-    public function ToggleChatAction($id_evento){
-        $em= $this->getDoctrine()->getManager();
-        $usuari= $this->getUser();
-        
-        $evento= $em->getRepository('IanserEventosBundle:Evento')->findOneBy(array("idevento"=>$id_evento));
-        $chat= $em->getRepository('IanserChatsBundle:Chats')->findOneBy(array("fkevento"=>$evento));
-        $comprova_existencia= $em->getRepository('IanserUserBundle:Usuariochats')->findOneBy(array("fkuser"=>$usuari, "fkchat"=>$chat));
-        
-        if(is_object($comprova_existencia)){
-            $em->remove($comprova_existencia);
-            $em->flush();
-            return new Response("false");
-        }
-        
-        else{
-            $afegir_chat= new Usuariochats();
-            $afegir_chat->setFkuser($usuari);
-            $afegir_chat->setFkchat($chat);
-            $em->persist($afegir_chat);
-            $em->flush();
-            return new Response("true");
-        }
-        
-    }
+
     
 }
 

@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Ianser\UserBundle\IanserUserBundle(),
-            new Ianser\ChatsBundle\IanserChatsBundle(),
             new Ianser\EventosBundle\IanserEventosBundle(),
             new Ianser\BuscadorBundle\IanserBuscadorBundle(),
             new Ianser\BaseBundle\IanserBaseBundle(),

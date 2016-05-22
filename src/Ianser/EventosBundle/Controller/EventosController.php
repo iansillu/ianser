@@ -56,10 +56,6 @@ class EventosController extends Controller
             $evento->setFkuser($this->getUser());
             $em->persist($evento);
             $em->flush();
-            $chat= new Chats();
-            $chat->setFkevento($evento);
-            $em->persist($chat);
-            $em->flush();
             return $this->redirect($this->generateUrl("evento_llistar"));
         }
 
@@ -114,9 +110,6 @@ class EventosController extends Controller
         $evento = $em->getRepository('IanserEventosBundle:Evento')->find($id);
         
         if ($evento->getFkUser()==$usuari_loguejat){
-
-            $chat= $em->getRepository('IanserChatsBundle:Chats')->findOneBy(array('fkevento'=>$evento));
-            $usuaris_chat= $em->getRepository('IanserUserBundle:Usuariochats')->findBy(array("fkchat"=>$chat));
             $usuaris_eventos= $em->getRepository('IanserUserBundle:Usuarioeventos')->findBy(array("fkevento"=>$evento));
             
             if(!is_null($usuaris_eventos)){
@@ -124,17 +117,7 @@ class EventosController extends Controller
                         $em->remove($relacio);
                         $em->flush();
                     }
-                }
-                
-                if(!is_null($usuaris_chat)){
-                    foreach($usuaris_chat as $relacio){
-                        $em->remove($relacio);
-                        $em->flush();
-                    }
-                }             
-            
-            $em->remove($chat);
-            $em->flush();
+                }           
             $em->remove($evento);
             $em->flush();
             return $this->redirect($this->generateUrl("evento_llistar"));
