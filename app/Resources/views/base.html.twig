@@ -4,6 +4,8 @@
     <title>I'anser</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     {% block js %}{% endblock %}
@@ -46,13 +48,15 @@
     #chat{display: flex;}
     .chatelem{flex-grow:1;}
     #menus{display: flex; width: 100%; font-family: 'menu'; font-weight: 100; margin-right: 50px;}
-    #content{}
+    #content{margin-bottom: 100px;}
 
     a:link{color: white; text-decoration: none;}
     a:visited{color: white;}
 
     .menuElement:hover {background-color: white; color: grey !important;}
     .menuElement:hover span{color: grey !important;}
+
+    .dropdown-toggle{background-color: transparent; }
 
 
     </style>
@@ -73,7 +77,18 @@
         <div id="misEventos" class="menuElement"><a href="{{ path('evento_llistar') }}"><span>ESDEVENIMENTS</span></a>
         </div>
 
-        <div id="usuario" class="menuElement"><a href="{{ path('usuari_modificar', {'id':app.user.iduser}) }}"><span>EL MEU COMPTE</span></div></a>
+        <!-- <div id="usuario" class="menuElement"><a href="{{ path('usuari_modificar', {'id':app.user.iduser}) }}"><span>EL MEU COMPTE</span></div></a> -->
+
+        <div class="dropdown menuElement dropdown-toggle">
+            <div class="dropdown-toggle" type="button" data-toggle="dropdown">
+            El MEU COMPTE
+            <span class="caret"></span></div>
+            <ul class="dropdown-menu">
+                <li><a href="{{ path('usuari_modificar', {'id':app.user.iduser}) }}">Modificar</a></li>
+                <li><a href="{{ path('usuario_logout') }}">Logout</a></li>
+            </ul>
+        </div>
+        
 
         <div id="info" class="menuElement"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></div>
     </div>

@@ -36,7 +36,7 @@
         {% for usuari in usuaris %}
             <tr style="border:1px solid black;">
                 <td style="border:1px solid black;">{{ usuari.username }}</td>
-                <td style="border:1px solid black;">{{ usuari.password }}</td>
+                <td style="border:1px solid black;">{{ usuari.password|slice(0,5) ~ '...' }}</td>
                 <td style="border:1px solid black;">{{ usuari.nombre }}</td>
                 <td style="border:1px solid black;">{{ usuari.apellido }}</td>
                 <td style="border:1px solid black;">{{ usuari.apellido2 }}</td>

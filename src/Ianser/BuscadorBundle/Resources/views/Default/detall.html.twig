@@ -1,3 +1,283 @@
-<p> Extiendes de la base y ya te apañas... Vista detallada </p>
-{% set ian="tera d'algo" %}
-<p> El objeto que recibes es evento </p>
+{% extends '::base.html.twig' %}
+
+{% block js %}
+<script>
+var ident="";
+$( document ).ready(function() {
+    $(".asistencia").click(function(){
+        ident = $(this).children("p").html();
+        $.ajax
+        ({
+            type: "GET",
+            url: Routing.generate('buscador_asistencia', {'id_evento': $(this).children("p").html()}),
+            context: document.body
+        }).done(
+            function(afegit)
+            {
+                if (afegit=="true"){
+
+                
+                    $(' #'+ident+'1').fadeOut(function () {
+                        $(' #'+ident+'2').fadeIn();
+                    });
+                    
+                }
+
+                else{
+
+                    $(' #'+ident+'2').fadeOut(function () {
+                        $(' #'+ident+'1').fadeIn();
+                    });
+                  
+                }
+            });
+    });
+    
+});     
+</script>
+{% endblock %}
+
+{% block css %}
+
+<style>
+    *{font-family: 'menu';}
+    h1{margin-bottom: 0px; text-align: center; flex-basis:100%;}
+    h4,h3{text-align: center; flex-basis:100%;}
+
+
+
+    #content{
+        width: 100vw;
+        padding-top: 50px;
+        display: flex;
+        justify-content:center;
+
+    }
+    #principal{
+        z-index: 10;
+        background-color: white;
+        border: 1px solid grey;
+        width: 80vw;
+        left: calc(50vw - 300px);
+        top: 25vh;
+        border-radius: 5px;
+        -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        -moz-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+        display: flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        max-width: 1000px;
+        min-width: 1000px;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .evento{
+    	max-width: 800px;
+    	min-width: 800px;
+    	max-height: auto;
+        min-height: auto;
+        margin-left: 100px;
+        margin-top: 20px;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .foto,.foto1{
+        width: 200px;
+        height: auto;
+        
+    }
+
+    .info{
+        width: 580px;
+        height: auto;
+        margin-left: 10px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction:row;
+        flex-flow: row wrap;
+        padding-left: 50px;
+    }
+
+    .infos{
+        width: 580px;
+        height: auto;
+        font-size: 20px;
+        margin-top: 5px;
+        display: flex;
+    }
+
+    .infos span{
+    	font-size: 18px;
+    	align-self: center;
+    	margin-left: 10px;
+    	color: grey;
+
+    }
+    /*.direccion{
+        min-width: 580px;
+        height: auto;
+        border: 1px solid blue;
+    }
+    .ciudad{
+        min-width: 580px;
+        height: auto;
+        border: 1px solid green;
+    }
+    .descripcion{
+        min-width: 580px;
+        height: auto;
+        border: 1px solid yellow;
+    }
+
+    .gratuit{}*/
+
+    .separacion{
+        min-width: 580px;
+        border-bottom: 1px solid lightgrey;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .acciones{
+        
+        margin-top: 10px;
+        display: flex;
+        flex-direction:row;
+        flex-basis:100%;
+        justify-content:center;
+        margin-bottom: 80px;
+    }
+
+    .asistir,.afegirChat{width: 150px; height: 50px; background-color: #FF7F7F; border-radius: 5px; margin-left: 10px; display: flex; align-items:center; justify-content:center;}
+    .desasistir{width: 150px; height: 50px; border-radius: 5px; margin-left: 10px; display: flex; align-items:center; justify-content:center; background-color: #7FDCFF; }
+
+    .mesinfo{}
+
+    .actionsspan{font-size: 16px; margin-right: 10px;}
+
+    .fa-check{color: grey;}
+    .fa-check:hover{color: green;}
+
+    #contingutVar{
+        z-index: 10;
+        background-color: white;
+            border: 1px solid grey;
+            width: 60vw;
+            left: calc(50vw - 300px);
+            top: 25vh;
+            border-radius: 5px;
+            -webkit-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+            -moz-box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+            box-shadow: -1px 3px 36px 5px rgba(219,219,219,.7);
+            display: flex;
+            flex-direction:column;
+            
+    }
+    .noFoundCrea{
+        color: white !important;
+        align-self:center;
+        border: 1px solid grey;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 50px;
+        margin-top: 20px;
+        background-color: #80d4ff;
+        -webkit-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+-moz-box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+box-shadow: 2px 2px 5px 0px rgba(36,36,36,1);
+font-size: 20px;
+    }
+
+    .fa-plus{margin-right: 10px;}
+
+    .fa-frown-o{align-self:center; margin-top: 20px;}
+
+    .asistir:hover {background-color: white; border: 2px solid #565656;}
+
+    .asistir:hover .fa-check{color: green;}
+    .asistir:hover span{color: green;}
+    .desasistir:hover .fa-check{color: red;}
+    .desasistir:hover span{color:red;}
+    .desasistir:hover{background-color: white; border: 2px solid #7FDCFF;}
+
+
+</style>
+
+{% endblock %}
+
+{% block body -%}
+
+	
+
+    <div id="principal" >
+
+
+        <h1>{{ evento.nombre }}</h1>
+        
+        <h4>Vista detallada</h4>
+
+
+        <div class="evento">
+        	<div class="acciones">
+                    {% if evento.asiste == 'no' %}
+
+                    <div id="{{ evento.idevento }}1" class="asistir asistencia"><p style="display:none">{{evento.idevento}}</p><span class="actionsspan">Assistir</span><i class="fa fa-check fa-2x" aria-hidden="true"></i></div>
+
+                    <div id="{{ evento.idevento }}2" class="desasistir asistencia" style="display:none;"><p style="display:none">{{evento.idevento}}</p><span class="actionsspan">Dessasistir</span><i class="fa fa-check fa-2x" aria-hidden="true"></i></div>
+
+                    {% else %}
+
+                    <div id="{{ evento.idevento }}1" class="asistir asistencia" style="display:none;"><p style="display:none">{{evento.idevento}}</p><span class="actionsspan">Assistir</span><i class="fa fa-check fa-2x" aria-hidden="true"></i></div>
+
+                    <div id="{{ evento.idevento }}2" class="desasistir asistencia "><p style="display:none">{{evento.idevento}}</p><span class="actionsspan">Dessasistir</span><i class="fa fa-check fa-2x" aria-hidden="true"></i></div>
+
+                    {% endif %}
+ 
+                </div>
+
+            <div class="foto1">
+            	<img class="foto" src="{{ asset('images/uploads/' ~ evento.dirImagen) }}">
+            </div>
+
+
+            <div class="info">
+                <div class="infos"><b>Direccio: </b><span>{{ evento.direccion }}</span></div>
+                <div class="infos"><b>Ciutat: </b><span>{{ evento.ciudad }}</span></div>
+                
+                {% if evento.gratuito == 0 %}
+                <div class="infos"><b>Gratuito: </b><span>Si</span></div>
+                {% else %}
+                <div class="infos"><b>Gratuito: </b><span>No</span></div>
+                {% endif %}
+                <div class="infos"><b>Entorn: </b><span>{{ evento.tipo }}</span></div>
+
+                <div class="infos"><b>Aforament: </b><span>{{ evento.aforo }}</span></div>
+
+                <div class="infos"><b>Edad: </b><span>{{ evento.edad }}</span></div>
+
+                
+                <div class="infos"><b>Descripcio: </b><span>{{ evento.descripcion }}</span></div>
+                
+                <div class="separacion"></div>
+                
+
+            </div>
+
+            
+
+            
+
+        </div>
+
+
+    </div>
+    
+
+
+{% endblock %}
+
+
