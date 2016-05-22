@@ -24,6 +24,7 @@ class BuscadorController extends Controller
         $evento= new Evento();
         $form=$this->createForm(new BuscadorType(), $evento );
         $form->handleRequest($request);
+        $usuari=$this->getUser();
 
         if ($form->isValid()) {
             $qb = $em->createQueryBuilder();
@@ -60,8 +61,20 @@ class BuscadorController extends Controller
             }
 
             $query= $qb->getQuery();
+            $eventos= $query->getResult();
+            $Aeventos=array();
+            foreach($eventos as $evento){
+                $comprova_existencia= $em->getRepository('IanserUserBundle:Usuarioeventos')->findOneBy(array("fkuser"=>$usuari, "fkevento"=>$evento));
+                if(is_object($comprova_existencia)){
+                    $evento->setAsiste("si");
+                }
+                else{
+                    $evento->setAsiste("no");
+                }
+                array_push($Aeventos, $evento);
+            }
 
-            return $this->render("IanserBuscadorBundle:Default:eventos_filtrats.html.twig", array('eventos' => $query->getResult()));
+            return $this->render("IanserBuscadorBundle:Default:eventos_filtrats.html.twig", array('eventos' => $Aeventos));
         }
 
        return $this->render("IanserBuscadorBundle:Default:filtre.html.twig", array('form'=>$form->createView(), 'evento'=>$evento));

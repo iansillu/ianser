@@ -104,8 +104,9 @@ class Evento
      * })
      */
     private $fkuser;
-
     
+    private $asiste;
+
     private $randomstring;
     
     public function __construct(){
@@ -119,6 +120,13 @@ class Evento
         $this->randomstring = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
     }
     
+    public function getAsiste(){
+        return $this->asiste;
+    }
+    
+    public function setAsiste($asiste){
+        $this->asiste=$asiste;
+    }
     
     /**
      * Set nombre
