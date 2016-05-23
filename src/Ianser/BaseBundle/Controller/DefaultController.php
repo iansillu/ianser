@@ -48,7 +48,7 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
-       
+       $sesion = $request->getSession();
         
         $usuari = new User();
         $form = $this->createForm(new UserRegisterType(), $usuari );
@@ -84,7 +84,6 @@ class DefaultController extends Controller
      */
     public function comprovaCredencialsAction(Request $request)
     {
-        $sesion = $request->getSession();
         $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         
