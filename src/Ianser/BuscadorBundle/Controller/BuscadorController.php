@@ -86,6 +86,16 @@ class BuscadorController extends Controller
     public function DetallAction($id){
         $em = $this->getDoctrine()->getManager();
         $evento = $em->getRepository('IanserEventosBundle:Evento')->find($id);
+        $usuari=$this->getUser();
+        $comprova_existencia= $em->getRepository('IanserUserBundle:Usuarioeventos')->findOneBy(array("fkuser"=>$usuari, "fkevento"=>$evento));
+        if(is_object($comprova_existencia)){
+            $evento->setAsiste("si");
+        }
+        else{
+            $evento->setAsiste("no");
+        }
+
+        
         return $this->render("IanserBuscadorBundle:Default:detall.html.twig", array('evento'=>$evento));
     }
     

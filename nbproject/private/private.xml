@@ -6,8 +6,8 @@
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Controller/EventosController.php</file>
             <file>file:/home/sergi/Escritorio/ianser/app/config/routing.yml</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BaseBundle/Controller/DefaultController.php</file>
-            <file>file:/home/sergi/Escritorio/ianser/app/AppKernel.php</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BuscadorBundle/Resources/views/Default/eventos_filtrats.html.twig</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Entity/Evento.php</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BuscadorBundle/Controller/BuscadorController.php</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Controller/UserController.php</file>
         </group>
