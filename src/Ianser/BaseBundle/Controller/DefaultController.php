@@ -48,7 +48,13 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
-       $sesion = $request->getSession();
+        $sesion = $request->getSession();
+        $authenticationUtils = $this->get('security.authentication_utils');
+        $error = $authenticationUtils->getLastAuthenticationError();
+        
+        if ($error) {
+            $sesion->getFlashBag()->set('login_incorrecte', "Contrasenya incorrecte o usuari inexistent.");  
+        }
         
         $usuari = new User();
         $form = $this->createForm(new UserRegisterType(), $usuari );
@@ -70,6 +76,7 @@ class DefaultController extends Controller
             $this->container->get('security.context')->setToken($token);
             return new RedirectResponse($this->generateUrl("redirect_login"));
         }
+
         
         return $this->render('IanserBaseBundle:Default:portada.html.twig', array(
             'last_username' => $sesion->get(SecurityContext::LAST_USERNAME),
@@ -77,24 +84,6 @@ class DefaultController extends Controller
             'form'=>$form->createView()
         ));
     }
-    
-    /**
-     * @Route("/checkusercredentials", name="comprova_credencials")
-     * @Method({"GET", "POST"})
-     */
-    public function comprovaCredencialsAction(Request $request)
-    {
-        $authenticationUtils = $this->get('security.authentication_utils');
-        $error = $authenticationUtils->getLastAuthenticationError();
-        
-        if ($error) {
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-    
     
     
 }

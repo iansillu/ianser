@@ -80,9 +80,12 @@ class UserController extends Controller
                 
                 if(!is_null($events_usuari)){
                     foreach($events_usuari as $event){
+                        $event_relacio= $em->getRepository('IanserUserBundle:Usuarioeventos')->findOneBy(array("fkevento"=>$event));
+                        $em->remove($event_relacio);
+                        $em->flush();
                         $em->remove($event);
                         $em->flush();
-                    }
+                    }   
                 }
             }
             
