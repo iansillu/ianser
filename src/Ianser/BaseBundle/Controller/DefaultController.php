@@ -48,13 +48,7 @@ class DefaultController extends Controller
      */
     public function loginAction(Request $request)
     {
-        $sesion = $request->getSession();
-        $authenticationUtils = $this->get('security.authentication_utils');
-        $error = $authenticationUtils->getLastAuthenticationError();
-        
-        if ($error) {
-            $sesion->getFlashBag()->set('login_incorrecte', "Contrasenya incorrecte o usuari inexistent.");  
-        }
+       
         
         $usuari = new User();
         $form = $this->createForm(new UserRegisterType(), $usuari );
@@ -83,6 +77,25 @@ class DefaultController extends Controller
             'form'=>$form->createView()
         ));
     }
+    
+    /**
+     * @Route("/checkusercredentials", name="comprova_credencials")
+     * @Method({"GET", "POST"})
+     */
+    public function comprovaCredencialsAction(Request $request)
+    {
+        $sesion = $request->getSession();
+        $authenticationUtils = $this->get('security.authentication_utils');
+        $error = $authenticationUtils->getLastAuthenticationError();
+        
+        if ($error) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    
     
     
 }
