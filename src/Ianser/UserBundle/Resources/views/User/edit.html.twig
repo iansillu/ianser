@@ -9,12 +9,12 @@ $( document ).ready(function() {
 });
 
 function mostraMissatge(){
-    $('#errors').show();
+    $('#errors').fadeIn();
     setTimeout(amagaMissatge, 5000);
 }
 
 function amagaMissatge(){
-    $('#errors').hide();
+    $('#errors').fadeOut();
 }
 
 </script>

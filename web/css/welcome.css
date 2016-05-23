@@ -198,6 +198,22 @@
 	    cursor: pointer;
     }
 
+    #errorMiss{
+    	background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    }
+
+    #borderSpanAcc:hover{
+    	background-color: grey;
+    	border: 2px solid #333333;
+    }
+    #borderSpanReg:hover{
+    	background-color: grey;
+    	border: 2px solid #333333;
+    }
+
 
 
 
