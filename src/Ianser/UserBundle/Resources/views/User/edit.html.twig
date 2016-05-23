@@ -5,7 +5,17 @@
 <script>
 $( document ).ready(function() {
     $('#ianser_userbundle_user_Modificar').parent('div').css("height","50px");
+
 });
+
+function mostraMissatge(){
+    $('#errors').show();
+    setTimeout(amagaMissatge, 5000);
+}
+
+function amagaMissatge(){
+    $('#errors').hide();
+}
 
 </script>
 
@@ -122,6 +132,10 @@ $( document ).ready(function() {
 
     #butonsMoure{margin-left: 157px; margin-top: 60px;}
 
+    #errors{background-color: #99ff99 !important; width: 300px; margin-left: calc(50% - 150px); display: none;}
+
+
+
     
 
 
@@ -129,6 +143,8 @@ $( document ).ready(function() {
 
 
 {% endblock %}
+
+
 
 
 {% block body -%}
@@ -141,8 +157,12 @@ $( document ).ready(function() {
 
     <div id="formuTotal">
             <div id="formPart1">
+                <div id="errors"> <p style="text-align:center">Els canvis han sigut efectuats correctament. <p></div>
                 {% if canvis is defined %}
-                    <div id="errors"> <p>Els canvis han sigut efectuats correctament. <p></div>
+                    <script type="text/javascript">
+                    mostraMissatge();
+                    </script>
+
                 {% endif %}
                 <div class="formNombre">
                 {{ form_label(form.nombre) }}{{ form_widget(form.nombre) }}

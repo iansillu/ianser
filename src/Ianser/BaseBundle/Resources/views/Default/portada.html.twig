@@ -7,7 +7,35 @@
 	<link rel="stylesheet" href="{{ asset('css/welcome.css') }}" />
 	<script src="{{ asset('js/welcome.js') }}"></script>
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<script type="text/javascript">
 
+		$( document ).ready(function() {
+			$('#ianser_userbundle_userregister_submit').prop( "disabled" , true );
+			$('#ianser_userbundle_userregister_submit').css( "opacity" , ".5" );
+
+				$('#ianser_userbundle_userregister_password_second').change(function() {
+					var pass1 = $('#ianser_userbundle_userregister_password_first').val();
+				 	var pass2 = $('#ianser_userbundle_userregister_password_second').val();
+
+				 	if(pass2 == pass1){
+
+				 		$('#ianser_userbundle_userregister_submit').prop( "disabled" , false );
+				 		$('#ianser_userbundle_userregister_submit').css( "opacity" , "1" );
+				 		$('#ianser_userbundle_userregister_password_second').css( "backgroundColor" , "transparent" );
+				 		$('#ianser_userbundle_userregister_password_second').css( "opacity" , "1" );
+				 	}
+				 	else{
+				 		$('#ianser_userbundle_userregister_password_second').css( "backgroundColor" , "red" );
+				 		$('#ianser_userbundle_userregister_password_second').css( "opacity" , ".5" );
+				 		$('#ianser_userbundle_userregister_submit').prop( "disabled" , true );
+						$('#ianser_userbundle_userregister_submit').css( "opacity" , ".5" );
+				 	}
+				});
+		});
+
+		
+
+	</script>
 </head>
 <body>
 	<div id="CoverVideo" class="">
@@ -18,8 +46,8 @@
 		
 		<div id="accions">
 			<div id="iniciaSesio">
-				<div id="buttFB"><div id="borderSpanFB"><span id="buttFBSpan">Inicia sessio amb facebook</span></div></div>
-				<div id="buttAcc"><div id="borderSpanAcc" onclick="OpcioIniciSesio();"><span id="buttAccSpan">Inicia sessio amb compte</span></div></div>
+				<div id="frase"><div id="fraseSpanReg"><span span id="fraseSpan">Inicia sessio en un moment!</span></div></div>
+				<div id="buttAcc"><div id="borderSpanAcc" onclick="OpcioIniciSesio();"><span id="buttAccSpan">Inica sessio</span></div></div>
 			</div>
 
 			<div id="space">
@@ -27,7 +55,7 @@
 
 			<div id="registraUsuari">
 				<div id="frase"><div id="fraseSpanReg"><span span id="fraseSpan">Registra't en 0,!</span></div></div>
-				<div id="registrar"><div id="borderSpanReg" onclick="OpcioRegistra();"><span span id="registrarSpan">Registrar usuari</span></div></div>
+				<div id="registrar"><div id="borderSpanReg" onclick="OpcioRegistra();"><span span id="registrarSpan">Registra't</span></div></div>
 			</div>
 		</div>
 
@@ -96,7 +124,7 @@
                 {{ form_row(form.password.first) }}
                 </div>
 
-                <div class="formNombre">
+                <div class="formNombre" id="secondPass">
                 {{ form_row(form.password.second) }}
                 </div>
 
@@ -113,10 +141,11 @@
 	
 
 
-	<iframe id="Fullframe" src="https://www.youtube.com/embed/1-sVz6c30PM?iv_load_policy=3&showinfo=0&controls=0&color=white&autohide=1&version=3&loop=1&playlist=player_304_812456813_1727842840&rel=0&hd=2&videoid=1-sVz6c30PM&autoplay=1&html5=1">
+	
+		<iframe id="Fullframe" src="https://www.youtube.com/embed/1-sVz6c30PM?iv_load_policy=3&amp;showinfo=0&amp;controls=0&amp;color=white&amp;autohide=1&amp;version=3&amp;loop=1&amp;playlist=player_304_827256952_127906349&amp;wmode=opaque&amp;rel=0&amp;hd=1&amp;videoid=1-sVz6c30PM&amp;autoplay=1&amp;html5=1&amp;widget_referrer=https%3A%2F%2Fwww.google.es%2F&amp;enablejsapi=1&amp;origin=http%3A%2F%2Fwww.agenciaumbrella.com"></iframe>
 
-	</iframe>
 
+	
 	
 </body>
 </html>

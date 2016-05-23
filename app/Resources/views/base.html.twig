@@ -54,10 +54,22 @@
     a:visited{color: white;}
 
     .menuElement:hover {background-color: white; color: grey !important;}
-    .menuElement:hover span{color: grey !important;}
+    .menuElement:hover span{color: grey !important; cursor: pointer;}
+    .dropdown-toggle{cursor: pointer;}
 
     .dropdown-toggle{background-color: transparent; }
 
+    @media all and (max-width: 1000px) {
+      #menuTop {
+        flex-flow: wrap;
+      }
+    }
+
+    @media all and (max-width: 580px) {
+      #logoSpan {
+        font-size: 50px;
+      }
+    }
 
     </style>
 </head>
@@ -68,9 +80,7 @@
     <div id="logo" ><span id="logoSpan">I' anser</span></div>
 
     <div id="menus" >
-        <div id="chat" class="menuElement">
-            <i class="fa fa-comments fa-2x chatelem" aria-hidden="true"></i><span class="chatelem">CHAT</span>
-        </div>
+        
 
         <div id="buscar" class="menuElement"><a href="{{ path('buscador_filtre') }}"><span>BUSCAR</span></div></a>
 
@@ -90,7 +100,7 @@
         </div>
         
 
-        <div id="info" class="menuElement"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></div>
+        <!-- <div id="info" class="menuElement"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></div> -->
     </div>
 </div>
 
