@@ -4,12 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Controller/EventosController.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/app/config/config.yml</file>
             <file>file:/home/sergi/Escritorio/ianser/app/config/routing.yml</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BaseBundle/Controller/DefaultController.php</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BuscadorBundle/Resources/views/Default/eventos_filtrats.html.twig</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/EventosBundle/Entity/Evento.php</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/BuscadorBundle/Controller/BuscadorController.php</file>
             <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Controller/UserController.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/src/Ianser/UserBundle/Form/UserRegisterType.php</file>
+            <file>file:/home/sergi/Escritorio/ianser/app/config/config_prod.yml</file>
         </group>
     </open-files>
 </project-private>

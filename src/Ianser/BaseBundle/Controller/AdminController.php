@@ -15,6 +15,7 @@ use Ianser\UserBundle\Entity\User;
 class AdminController extends Controller
 {
 
+    //renderitzem la portada de l'admin
     /**
      * @Route("/", name="admin_portada")
      * @Method("GET")
@@ -26,7 +27,7 @@ class AdminController extends Controller
     }
     
     
-    
+    //renderitzem una vista amb tots els usuaris
     /**
      * @Route("/llistar", name="admin_llistar")
      * @Method("GET")
@@ -39,6 +40,7 @@ class AdminController extends Controller
         return $this->render("IanserUserBundle:User:index.html.twig", array('usuaris'=>$usuaris));
     }
     
+    // crea un usuari amb role ROLE_EMPRESA
     /**
      * @Route("/crear", name="admin_crear")
      */
@@ -74,6 +76,7 @@ class AdminController extends Controller
         
     }
     
+    // modifica un usuari, el qual aconseguim a través de la seva ID
     /**
      * @Route("/actualitzar/{id}", name="admin_modificar")
      */
@@ -81,7 +84,6 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $usuari = $em->getRepository('IanserUserBundle:User')->find($id);
-        $usuari_loguejat= $this->getUser();
         
         
         $form=$this->createForm(new UserType(), $usuari );
@@ -99,6 +101,8 @@ class AdminController extends Controller
         
 
     }
+    
+    // elimina un usuari de la base de dades
     /**
      * @Route("/eliminar/{id}", name="admin_eliminar")
      */

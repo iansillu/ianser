@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  */
 class UserController extends Controller
 {
-
+    // comprovem que l'usuari tingui privilegis per modificar l'instancia de l'usuari, si en te, el modifiquem
     /**
      * @Route("/actualitzar/{id}", name="usuari_modificar")
      */
@@ -63,6 +63,7 @@ class UserController extends Controller
         
 
     }
+    // eliminem l'usuari i segons el seu rol, les dades que té relacionades amb ell
     /**
      * @Route("/eliminar/{id}", name="usuari_eliminar")
      */

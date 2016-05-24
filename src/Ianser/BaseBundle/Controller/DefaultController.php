@@ -19,6 +19,7 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 class DefaultController extends Controller
 {
 
+    // aquest controlador redirigeix l'usuari després del login segons el seu rol
     /**
      * @Route("/redirect", name="redirect_login")
      * @Method({"GET", "POST"})
@@ -42,6 +43,8 @@ class DefaultController extends Controller
        
     }
     
+    // crea un nou usuari i controla els logins incorrectes
+    // finalment cridem la funció redirectLoginAction per decidir a on redirigir-lo
     /**
      * @Route("/", name="portada")
      * @Method({"GET", "POST"})

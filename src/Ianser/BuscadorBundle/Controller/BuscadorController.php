@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 */
 class BuscadorController extends Controller
 {
+    //segons les dades entrades en el formulari, creem una query que ens retorna els events que compleixin els requisits entrats
     /**
      * @Route("/filtre", name="buscador_filtre")
      */
@@ -80,6 +81,7 @@ class BuscadorController extends Controller
        return $this->render("IanserBuscadorBundle:Default:filtre.html.twig", array('form'=>$form->createView(), 'evento'=>$evento));
     }
     
+    //renderitzem una vista detallada d'un event
     /**
      * @Route("/detall/{id}", name="buscador_detall")
      */
@@ -99,6 +101,8 @@ class BuscadorController extends Controller
         return $this->render("IanserBuscadorBundle:Default:detall.html.twig", array('evento'=>$evento));
     }
     
+    //afegim o treiem una relacio entre un event i un usuari
+    //si ja existia la relació s'elimina, si no, es crea
     /**
      * @Route("/asistencia/{id_evento}", name="buscador_asistencia", options = { "expose" = true })
      */

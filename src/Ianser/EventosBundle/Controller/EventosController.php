@@ -15,6 +15,7 @@ use Ianser\UserBundle\Entity\Usuariochats;
 class EventosController extends Controller
 {
 
+    // obtenim els events relacionats amb l'usuari i renderitzem una vista segons el seu rol
     /**
      * @Route("/api/eventos/llistar", name="evento_llistar")
      * @Method("GET")
@@ -40,6 +41,7 @@ class EventosController extends Controller
         
     }
     
+    // creem un aconteixement
     /**
      * @Route("/empresa/eventos/crear", name="evento_crear")
      */
@@ -66,7 +68,7 @@ class EventosController extends Controller
         
     }
     
-    
+    // permet modificar un aconteixement si ha sigut el mateix usuari qui l'ha creat
     /**
      * @Route("/empresa/eventos/actualitzar/{id}", name="evento_modificar")
      */
@@ -99,6 +101,7 @@ class EventosController extends Controller
 
     }
     
+    // elimina un event i totes les possibles relacions que tingui amb usuaris, si aquest event ha estat creat per el mateix usuari
     /**
      * @Route("/empresa/eventos/eliminar/{id}", name="evento_eliminar")
      */
